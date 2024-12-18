@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    background-color: #FA4B37;
+    background: linear-gradient(to right, #FA4B37, #DF2771);
     padding: 15px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: fixed;
@@ -63,7 +63,7 @@ nav a:hover {
 .welcome {
     text-align: center;
     padding: 100px 20px;
-    background: linear-gradient(135deg, #FA4B37, #FA4B37);
+    background: linear-gradient(to right, #FA4B37, #DF2771);
     color: #fff;
     margin-top: 70px;
     height: 286px;

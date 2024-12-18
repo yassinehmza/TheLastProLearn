@@ -10,7 +10,7 @@
 
 .course-details-container h1 {
     font-size: 2rem;
-    color: #333;
+    color: #FA4B37;
     text-align: center;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .course-details-container .play-course-button {
-    background-color: #28a745;
+    background-color: #FA4B37;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -36,11 +36,11 @@
 }
 
 .course-details-container .play-course-button:hover {
-    background-color: #218838;
+    background-color:#FA4B37;
 }
 
 .course-details-container a {
-    color: #2d9cdb;
+    color: #FA4B37;
     text-decoration: none;
     font-size: 1rem;
     display: block;
