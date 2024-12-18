@@ -6,7 +6,7 @@
     <title>ProLearn</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -49,38 +49,42 @@
             
             </div>
         </div>
+        <!-- ABOUT -->
+        <div class="diffSection" id="about_section">
+            <center><p style="font-size: 50px; padding: 100px">About</p></center>
+            <div class="about-content">
+                    <div class="side-image">
+                        <img class="sideImage" src="images/extra/e3.jpg">
+                    </div>
+                    <div class="side-text">
+                        <h2>What you think about us ?</h2>
+                        <p>Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. Educational methods include teaching, training, storytelling, discussion and directed research.<br> Educational website can include websites that have games, videos or topic related resources that act as tools to enhance learning and supplement classroom teaching. These websites help make the process of learning entertaining and attractive to the student, especially in today's age. <br>Using HTML(HyperText Markup Language), CSS(Cascading Style Sheet), JavaScript, we can make learning more easier and in a interesting way.</p>
+                    </div>
+            </div>
+        </div>
+       
 
         <!-- Feedback Section -->
-        <section id="feedback" class="feedback visible">
-            <h2>Feedback</h2>
-            <p>We’d love to hear your thoughts on ProLearn! Please rate your experience and leave a message.</p>
-            <form>
-                <div class="form-group">
-                    <label for="feedback-name">Name:</label>
-                    <input type="text" id="feedback-name" name="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="feedback-message">Your Feedback:</label>
-                    <textarea id="feedback-message" name="message" rows="4" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="feedback-rating">Rate Your Experience:</label>
-                    <div id="feedback-rating" class="star-rating">
-                        <input type="radio" name="rating" value="5" id="star-5"><label for="star-5">&#9733;</label>
-                        <input type="radio" name="rating" value="4" id="star-4"><label for="star-4">&#9733;</label>
-                        <input type="radio" name="rating" value="3" id="star-3"><label for="star-3">&#9733;</label>
-                        <input type="radio" name="rating" value="2" id="star-2"><label for="star-2">&#9733;</label>
-                        <input type="radio" name="rating" value="1" id="star-1"><label for="star-1">&#9733;</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn-submit">Submit Feedback</button>
-                </div>
-            </form>
-        </section>
+        <div class="title2" id="feedBACK">
+            <span>Give Feedback</span>
+            <div class="shortdesc2">
+                <p>Please share your valuable feedback to us</p>
+            </div>
+        </div>
+    
+        <div class="feedbox">
+            <div class="feed">
+                <form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
+                    <label>Your Name</label><br>
+                    <input type="text" name="" class="fname" required="required"><br>
+                    <label>Email</label><br>
+                    <input type="email" name="mail" required="required"><br>
+                    <label>Additional Details</label><br>
+                    <textarea name="addtional"></textarea><br>
+                    <button type="submit" id="csubmit">Send Message</button>
+                </form>
+            </div>
+        </div>
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
