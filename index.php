@@ -45,12 +45,12 @@
             </div>
             <div class="cbox">
                 <div class="det"><a href="Cours/computer_courses.html"><img src="images/courses/computer.png" alt="Computer Courses">Computer Courses</a></div>
-                <div class="det"><a href="Cours/computer_courses.html#data"><img src="images/courses/data.png" alt="Data Structures">Data Structures</a></div>
-                <div class="det"><a href="Cours/computer_courses.html#algo"><img src="images/courses/algo.png" alt="Algorithm">Algorithm</a></div>
+                <div class="det"><a href="pages/DataStructures.html"><img src="images/courses/data.png" alt="Data Structures">Data Structures</a></div>
+                <div class="det"><a href="pages/Algorithm.html"><img src="images/courses/algo.png" alt="Algorithm">Algorithm</a></div>
             </div>
         </div>
 
-        <!-- ABOUT -->
+        <!-- ABOUT Section -->
         <div class="diffSection" id="about_section">
             <center><p class="about-title">About</p></center>
             <div class="about-content">
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <!-- CONTACT US -->
+        <!-- CONTACT US Section -->
         <div class="diffSection" id="contactus_section">
             <center><p class="contact-title">Contact Us</p></center>
             <div class="back-contact">
@@ -104,25 +104,40 @@
         </div>
 
         <!-- Feedback Section -->
-        <div class="title2" id="feedBACK">
-            <span>Give Feedback</span>
-            <div class="shortdesc2">
-                <p>Please share your valuable feedback with us</p>
-            </div>
-        </div>
+        <div class="feedback-container">
+            <?php
+            // Include database connection
+            include './backend/db.php';
 
-        <div class="feedbox">
-            <div class="feed">
-                <form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
-                    <label>Your Name</label><br>
-                    <input type="text" name="fname" class="fname" required="required"><br>
-                    <label>Email</label><br>
-                    <input type="email" name="mail" required="required"><br>
-                    <label>Additional Details</label><br>
-                    <textarea name="additional"></textarea><br>
-                    <button type="submit" id="csubmit">Send Message</button>
-                </form>
-            </div>
+            // Query to fetch feedback data
+            $sql = "SELECT id, name, your_feedback, rate_your_experience, created_at FROM feedback";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Loop through feedback and display each one as a card
+                while ($row = $result->fetch_assoc()) {
+                    echo "<div class='feedback-card'>
+                            <div class='card-header'>
+                                {$row['name']}
+                            </div>
+                            <div class='card-content'>
+                                <p>{$row['your_feedback']}</p>
+                            </div>
+                            <div class='card-rating'>
+                                Rating: {$row['rate_your_experience']}
+                            </div>
+                            <div class='card-date'>
+                                Submitted at: {$row['created_at']}
+                            </div>
+                        </div>";
+                }
+            } else {
+                echo "<p>No feedbacks found. Be the first to share your feedback!</p>";
+            }
+
+            // Close the database connection
+            $conn->close();
+            ?>
         </div>
 
         <!-- Contact Section -->
@@ -168,13 +183,7 @@
         }
 
         // Check login status on page load
-        window.onload = checkLoginStatus;
-
-        // Toggle the navigation menu on mobile view
-        function toggleMenu() {
-            let navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
+        checkLoginStatus();
     </script>
 </body>
 </html>

@@ -11,7 +11,6 @@ body {
 }
 
 header {
-    /*background: linear-gradient(to right, #FA4B37, #DF2771);*/
     background-color: #f4f4f4;
     padding: 15px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -31,7 +30,6 @@ nav {
     font-size: 28px;
     font-weight: bold;
     color: #fff;
-
 }
 
 nav ul {
@@ -50,7 +48,6 @@ nav a {
 }
 
 nav a:hover {
-    
     color: #FA4B37;
 }
 
@@ -147,6 +144,7 @@ footer {
     position: relative;
     bottom: 0;
 }
+
 main {
     margin: 0;
     padding: 0;
@@ -242,271 +240,195 @@ main {
     background-color: #ffcc00;
     color: black;
 }
-/*POPULAR SUBJECTS*/
+
+/* Popular Subjects */
 .cbox {
-	position: relative;
-	width: 100%;
-	display: inline-flex;
-	flex-wrap: wrap;
-	justify-content: center;
+    position: relative;
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
 .cbox .det {
-	width: 250px;
-	height: 80px;
-	margin: 10px;
-	background: #fff;
-	cursor: pointer;
+    width: 250px;
+    height: 80px;
+    margin: 10px;
+    background: #fff;
+    cursor: pointer;
 }
-.cbox .det a{
-	justify-content: space-around;
-	width: 250px;
-	padding: 28px;
-	border-radius: 10px;
-	border: 1px solid #FA4B37;
-	font-size: 15px;
-	color: #272529;
-	font-family: cursive;
-	text-decoration: none;
+
+.cbox .det a {
+    justify-content: space-around;
+    width: 250px;
+    padding: 28px;
+    border-radius: 10px;
+    border: 1px solid #FA4B37;
+    font-size: 15px;
+    color: #272529;
+    font-family: cursive;
+    text-decoration: none;
 }
+
 .cbox .det a:hover {
-	background: linear-gradient(to right, #FA4B37, #DF2771);
-	color: white;
+    background: linear-gradient(to right, #FA4B37, #DF2771);
+    color: white;
 }
-.cbox .det a:hover img{
-	filter: brightness(100);
+
+.cbox .det a:hover img {
+    filter: brightness(100);
 }
+
 .cbox img {
-	width: 20px;
-	margin-right: 20px;
+    width: 20px;
+    margin-right: 20px;
 }
+
 .title {
-    margin-top: 0px; 
-   font-family: 'Open Sans', sans-serif;
-   font-size: 30px;
-   text-align: center;
-   color: #2E3D49;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    margin-top: 0px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    color: #2E3D49;
 }
 
-body {
-    background-color: #f8f9fa;
-    color: #333;
-}
-/*ABOUT*/
+/* About */
 .about-content {
-	width: 100%;
-	position: relative;
-	justify-content: center;
-	flex-wrap: wrap;
-	display: flex;
-	align-items: center;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
 }
+
 .about-content .side-text {
-	width: 550px;
-	padding: 50px 40px;
-	background: #fff;
-	box-shadow: 2px 0 100px rgba(0,0,0,0.3);
-	border-radius: 5px;
-	text-align: justify;
-	line-height: 22px;
-	opacity: 0;
-	transform: translateX(-100px);
-	transition: 1s ease-in-out;
+    width: 550px;
+    padding: 50px 40px;
+    background: #fff;
+    box-shadow: 2px 0 100px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    text-align: justify;
+    line-height: 22px;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: 1s ease-in-out;
 }
+
 .about-content .side-text-appear {
-	opacity: 1;
-	transform: translateX(0px);
+    opacity: 1;
+    transform: translateX(0px);
 }
+
 .about-content .side-text h2 {
-	padding: 10px;
+    padding: 10px;
 }
+
 .about-content .side-text p {
-	padding: 10px;
+    padding: 10px;
 }
+
 .about-content .side-image img {
-	width: 90%;
-	border-radius: 5px;
+    width: 90%;
+    border-radius: 5px;
 }
+
 .sideImage {
-	transform: translateX(100px);
-	opacity: 0;
-	transition: .8s ease-in-out;
+    transform: translateX(100px);
+    opacity: 0;
+    transition: .8s ease-in-out;
 }
+
 .sideImage-appear {
-	opacity: 1;
-	transform: translateX(0px);
+    opacity: 1;
+    transform: translateX(0px);
 }
-/*Contact Us Section*/
+
+/* Contact Us Section */
 .csec {
-	/*background: linear-gradient(to right, #FA4B37, #DF2771);*/
-	background-attachment: fixed; 
-	position: absolute;
-	width: 100%;
-	height: 250px;
-	top: 200px;
-	content: '';
-	transform-origin: top right;
-	transform: skewY(-10deg);
-	z-index: -1;
+    background-attachment: fixed;
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    top: 200px;
+    content: '';
+    transform-origin: top right;
+    transform: skewY(-10deg);
+    z-index: -1;
 }
+
 .back-contact {
-	margin-top: 0px;
-	transform: translateY(-50px);
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
+    margin-top: 0px;
+    transform: translateY(-50px);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
+
 .cc {
-	height: 400px;
-	width: 400px;
-	height: 500px;
-	border-radius: 10px;
-	justify-content: center;
-	box-shadow: 1px 1px 20px rgba(0,0,0,0.4);
-	background: #fff;
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+    justify-content: center;
+    box-shadow: 1px 1px 20px rgba(0,0,0,0.4);
+    background: #fff;
 }
+
 .cc form {
-	margin: 5%;
-	margin-top: 40px;
-	width: 90%;
-	height: 90%;
+    margin: 5%;
+    margin-top: 40px;
+    width: 90%;
+    height: 90%;
 }
+
 .cc form label {
-	position: absolute;
-	color: #2E3D49;
-	font-size: 10px;
-	font-weight: 800;
+    position: absolute;
+    color: #2E3D49;
+    font-size: 10px;
+    font-weight: 800;
 }
+
 .cc form input {
-	padding: 15px;
-	margin-bottom: 10px;
-	border-radius: 5px;
-	box-shadow: inset 0 0 5px lightgray;
-	border: 1px solid rgba(0,0,0,0.2);
-	outline: none;
-	color: #2E3D49;
-	font-weight: 600;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px lightgray;
+    border: 1px solid rgba(0,0,0,0.2);
+    outline: none;
+    color: #2E3D49;
+    font-weight: 600;
 }
+
 .imp {
-	color: red;
+    color: red;
 }
+
 form textarea {
-	width: 100%;
-	height: 100px;
-	box-shadow: inset 0 0 5px lightgray;
-	border: 1px solid rgba(0,0,0,0.2);
-	border-radius: 5px;
-	outline: none;
-	color: #2E3D49;
-	font-weight: 600;
-	padding: 15px;
+    width: 100%;
+    height: 100px;
+    box-shadow: inset 0 0 5px lightgray;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    outline: none;
+    color: #2E3D49;
+    font-weight: 600;
+    padding: 15px;
 }
+
 #csubmit {
-	margin-top: 20px; 
-	background: linear-gradient(to right, #FA4B37, #DF2771);
-	border-radius: 5px;
-	border-style: none;
-	outline: none;
-	width: 100%;
-	padding: 15px 25px;
-	color: #fff;
-	font-size: 12px;
-	cursor: pointer;
-}
-/*FEEDBACK*/
-.title2 {
-	position: relative;
-	margin-top: 150px;
-	margin-left: 100px;
-}
-.title2 span{
-	font-weight: 700;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 30px;
-	color: #2E3D49;
-}
-.title2 .shortdesc2 {
-	padding: 10px;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 15px;
-	color: #2E3D49;
-	margin-bottom: 10px;
-}
-.feedbox {
-	margin-top: 50px;
-	width: 100%;
-	display: flex;
-	background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.7)),url("images/extra/b4.jpg");
-	background-size: cover;
-	padding: 50px 80px;
-	background-attachment: fixed;
-}
-.feed {
-	width: 800px;
-	height: 400px;
-	position: relative;
-	border-radius: 10px;
-	justify-content: center;
-	box-shadow: inset 0 0 90px rgba(0,0,0,0.6),
-					0 0 80px rgba(0,0,0,0.2);
-	background: rgba(0,0,0,0.4);
-}
-.feed form {
-	width: 100%;
-	height: 100%;
-	padding: 20px;
+    margin-top: 20px;
+    background: linear-gradient(to right, #FA4B37, #DF2771);
+    border-radius: 5px;
+    border-style: none;
+    outline: none;
+    width: 100%;
+    padding: 15px 25px;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
 }
 
-.feed form label {
-	position: absolute;
-	color: #f2f2f2;
-	font-size: 10px;
-	font-weight: 800;
-}
-.feed form input, .feed textarea {
-	padding: 15px;
-	border-radius: 5px;
-	box-shadow: inset 0 0 5px lightgray;
-	border: 1px solid rgba(0,0,0,0.2);
-	outline: none;
-	color: #2E3D49;
-	background: #fff9;
-	font-weight: 600;
-}
-.feed form input {
-	margin-bottom: 15px;
-	width: 50%;
-}
-.feed form .fname {
-	width: 25%;
-}
-.feed form textarea {
-	width: 100%;
-	height: 100px;
-}
-.feed #csubmit {
-	margin-top: 25px; 
-	background: linear-gradient(to right, #FA4B37, #DF2771);
-	border-radius: 5px;
-	border-style: none;
-	outline: none;
-	width: 100%;
-	padding: 15px 25px;
-	color: #fff;
-	font-size: 12px;
-	cursor: pointer;
-}
-
-/* General Styles */
-body {
-    font-family: 'Roboto', sans-serif;
-}
-
+/* Feedback */
 .title2 {
     text-align: center;
     margin: 40px 0;
@@ -519,12 +441,12 @@ body {
 
 .feedbox {
     display: flex;
-    justify-content: flex-start; /* Align items to the start of the row */
-    gap: 20px; /* Add spacing between the cards */
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
-    padding-bottom: 20px; /* Add some space for scrolling */
+    justify-content: flex-start;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
     animation: moveLeftToRight 1s ease-in-out;
-    scroll-snap-type: x mandatory; /* Enable smooth scroll snapping */
+    scroll-snap-type: x mandatory;
 }
 
 /* Feedback Card Styling */
@@ -533,11 +455,11 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px; /* Set a fixed width for each card */
+    width: 300px;
     max-width: 100%;
-    transform: translateX(-100%); /* Start with the card off-screen */
-    animation: slideInFromLeft 1s forwards; /* Smooth sliding animation */
-    scroll-snap-align: start; /* Ensure snapping to each card */
+    transform: translateX(-100%);
+    animation: slideInFromLeft 1s forwards;
+    scroll-snap-align: start;
 }
 
 .feedback-card h3 {
@@ -569,25 +491,18 @@ body {
 /* Animations */
 @keyframes slideInFromLeft {
     0% {
-        transform: translateX(-100%); /* Start from the left */
+        transform: translateX(-100%);
     }
     100% {
-        transform: translateX(0); /* End at normal position */
+        transform: translateX(0);
     }
 }
 
 @keyframes moveLeftToRight {
     0% {
-        transform: translateX(-100%); /* Start from the left */
+        transform: translateX(-100%);
     }
     100% {
-        transform: translateX(0); /* End at normal position */
-    }
-}
-
-/* Responsiveness: Ensure the feedbox scrolls horizontally on smaller screens */
-@media (max-width: 768px) {
-    .feedbox {
-        flex-direction: row; /* Ensure row layout on smaller screens */
+        transform: translateX(0);
     }
 }
