@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include '../backend/db.php';
+    include 'db.php';
 
     // Get user inputs
     $email = $_POST['email'];
