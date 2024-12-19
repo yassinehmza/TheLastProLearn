@@ -3,7 +3,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include '../backend/db.php'; // Ensure the correct path to db.php
 
     // Sanitize and validate input data
-    $role = $_POST['role'];
     $prenom = htmlspecialchars($_POST['prenom']);
     $nom = htmlspecialchars($_POST['nom']);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -39,6 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $stmt->close();
     }
+
+    // Set the role to "etudiant"
+    $role = 'etudiant';
 
     // Prepare SQL query to insert the new user into the database
     $sql = "INSERT INTO users (role, prenom, nom, email, password) VALUES (?, ?, ?, ?, ?)";

@@ -423,3 +423,93 @@ body {
 	font-size: 12px;
 	cursor: pointer;
 }
+
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.title2 {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.shortdesc2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.feedbox {
+    display: flex;
+    justify-content: flex-start; /* Align items to the start of the row */
+    gap: 20px; /* Add spacing between the cards */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    padding-bottom: 20px; /* Add some space for scrolling */
+    animation: moveLeftToRight 1s ease-in-out;
+    scroll-snap-type: x mandatory; /* Enable smooth scroll snapping */
+}
+
+/* Feedback Card Styling */
+.feedback-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Set a fixed width for each card */
+    max-width: 100%;
+    transform: translateX(-100%); /* Start with the card off-screen */
+    animation: slideInFromLeft 1s forwards; /* Smooth sliding animation */
+    scroll-snap-align: start; /* Ensure snapping to each card */
+}
+
+.feedback-card h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.feedback-card .feedback-text {
+    margin: 10px 0;
+    color: #555;
+}
+
+.feedback-card .rating {
+    margin: 10px 0;
+}
+
+.feedback-card .submitted-at {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Rating Stars */
+.rating {
+    font-size: 18px;
+    color: #ff9800;
+}
+
+/* Animations */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%); /* Start from the left */
+    }
+    100% {
+        transform: translateX(0); /* End at normal position */
+    }
+}
+
+@keyframes moveLeftToRight {
+    0% {
+        transform: translateX(-100%); /* Start from the left */
+    }
+    100% {
+        transform: translateX(0); /* End at normal position */
+    }
+}
+
+/* Responsiveness: Ensure the feedbox scrolls horizontally on smaller screens */
+@media (max-width: 768px) {
+    .feedbox {
+        flex-direction: row; /* Ensure row layout on smaller screens */
+    }
+}

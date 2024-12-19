@@ -37,6 +37,7 @@
       border-radius: 8px;
       padding: 20px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
     .course-card h3 {
@@ -58,13 +59,113 @@
       font-size: 0.9em;
       color: #777;
     }
+
+    .play-button {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .play-button:hover {
+      background-color: #2980b9;
+    }
+
+    .video-list {
+      display: none; /* Initially hidden */
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .video-item {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-item h4 {
+      margin: 0 0 10px;
+    }
+
+    .video-item button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .video-item button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+      background-color: white;
+      padding: 20px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Mes Cours</h1>
+
+    <!-- List of courses -->
     <div class="course-list" id="course-list">
       <!-- Courses will be dynamically loaded here -->
+    </div>
+
+    <!-- Modal for video playback -->
+    <div id="video-modal" class="modal">
+      <div class="modal-content">
+        <button id="close-modal" class="close-modal">Close</button>
+        <video id="course-video" controls>
+          <source id="video-source" src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
   </div>
 
@@ -80,7 +181,7 @@
           return;
         }
 
-        // Display each course
+        // Display each course with a play button
         courses.forEach(course => {
           const courseCard = document.createElement('div');
           courseCard.classList.add('course-card');
@@ -89,6 +190,16 @@
             <p>${course.description}</p>
             <p class="price">Prix : €${course.price}</p>
             <p class="date">Créé le : ${new Date(course.created_at).toLocaleDateString()}</p>
+            <button class="play-button" onclick="toggleVideoList(this, ${JSON.stringify(course.videos)})">Play</button>
+            <div class="video-list">
+              <h4>Liste des vidéos</h4>
+              ${course.videos.map(video => `
+                <div class="video-item">
+                  <p>${video.title}</p>
+                  <button onclick="playVideo('${video.url}')">Sélectionner</button>
+                </div>
+              `).join('')}
+            </div>
           `;
           courseList.appendChild(courseCard);
         });
@@ -96,6 +207,31 @@
       .catch(error => {
         console.error('Erreur lors de la récupération des cours:', error);
       });
+
+    // Toggle video list visibility
+    function toggleVideoList(button, videos) {
+      const videoList = button.nextElementSibling; // The div containing video list
+      const isVisible = videoList.style.display === 'flex';
+      videoList.style.display = isVisible ? 'none' : 'flex';
+      button.textContent = isVisible ? 'Play' : 'Hide Videos'; // Change button text
+    }
+
+    // Function to open the video modal
+    function playVideo(videoUrl) {
+      const modal = document.getElementById('video-modal');
+      const videoSource = document.getElementById('video-source');
+      const videoElement = document.getElementById('course-video');
+      const closeModal = document.getElementById('close-modal');
+      
+      videoSource.src = videoUrl;
+      videoElement.load();
+      modal.style.display = 'flex';
+
+      closeModal.onclick = () => {
+        modal.style.display = 'none';
+        videoElement.pause();
+      };
+    }
   </script>
 </body>
 </html>

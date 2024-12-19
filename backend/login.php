@@ -26,14 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['nom'] = $user['nom'];
                 $_SESSION['role'] = $user['role'];
 
-                // Redirect based on role
-                if ($user['role'] === 'professeur') {
-                    header('Location: ../dashboard/dashboard_teacher.html');
-                } elseif ($user['role'] === 'étudiant') {
-                    header('Location: ../dashboard/dashboard_etudiant.html');
-                } else {
-                    echo "Rôle inconnu.";
-                }
+                // Redirect to a common dashboard
+                header('Location: ../dashboard/dashboard.html');
                 exit();
             } else {
                 echo "Mot de passe incorrect.";
