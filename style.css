@@ -418,24 +418,36 @@ form textarea {
 }
 
 .feedback-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.feedback-row {
+/* Slider Styles */
+.feedback-slider {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+    width: max-content;
 }
 
+.feedback-slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+/* Feedback Card Styles */
 .feedback-card {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     padding: 25px;
-    width: 300px;
+    width: calc(100% / 6 - 10px); /* 6 cartes par slide avec un espace */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeInUp 0.5s ease forwards;
 }
@@ -479,6 +491,47 @@ form textarea {
     font-size: 0.85em;
     text-align: right;
 }
+
+/* Slider Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.slider-btn.prev {
+    left: 10px;
+}
+
+.slider-btn.next {
+    right: 10px;
+}
+
+.slider-btn:hover {
+    background-color: #333;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 
 /* Animations */
 @keyframes fadeInUp {

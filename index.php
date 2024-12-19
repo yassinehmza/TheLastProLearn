@@ -104,50 +104,83 @@
                 </div>
             </div>
         </div>
-
-        <!-- Feedback Section -->
+<!--Feedack-->
         <div class="diffSection" id="feedback_section">
-            <center><p class="feedback-title">Student Feedback</p></center>
-            <div class="feedback-container">
-                <?php
-                // Include database connection
-                include './backend/db.php';
+    <center><p class="feedback-title">Student Feedback</p></center>
+    <div class="feedback-container">
+        <button class="slider-btn prev">‹</button>
+        <div class="feedback-slider">
+            <!-- PHP générera ici les cartes feedback -->
+            <?php
+            include './backend/db.php';
 
-                // Query to fetch feedback data
-                $sql = "SELECT id, name, your_feedback, rate_your_experience, created_at FROM feedback";
-                $result = $conn->query($sql);
+            $sql = "SELECT id, name, your_feedback, rate_your_experience, created_at FROM feedback";
+            $result = $conn->query($sql);
 
-                if ($result->num_rows > 0) {
-                    echo "<div class='feedback-row'>";
-                    // Loop through feedback and display each one as a card
-                    while ($row = $result->fetch_assoc()) {
-                        // Convert rating to stars
-                        $stars = str_repeat('★', intval($row['rate_your_experience'])) . 
-                                str_repeat('☆', 5 - intval($row['rate_your_experience']));
-                        
-                        echo "<div class='feedback-card'>
-                                <div class='card-header'>
-                                    <h3>{$row['name']}</h3>
-                                    <div class='stars'>{$stars}</div>
-                                </div>
-                                <div class='card-content'>
-                                    <p>{$row['your_feedback']}</p>
-                                </div>
-                                <div class='card-footer'>
-                                    <span>{$row['created_at']}</span>
-                                </div>
-                            </div>";
-                    }
-                    echo "</div>";
-                } else {
-                    echo "<p>No feedbacks found. Be the first to share your feedback!</p>";
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $stars = str_repeat('★', intval($row['rate_your_experience'])) . 
+                             str_repeat('☆', 5 - intval($row['rate_your_experience']));
+
+                    echo "<div class='feedback-card'>
+                            <div class='card-header'>
+                                <h3>{$row['name']}</h3>
+                                <div class='stars'>{$stars}</div>
+                            </div>
+                            <div class='card-content'>
+                                <p>{$row['your_feedback']}</p>
+                            </div>
+                            <div class='card-footer'>
+                                <span>{$row['created_at']}</span>
+                            </div>
+                          </div>";
                 }
+            } else {
+                echo "<p>No feedbacks found. Be the first to share your feedback!</p>";
+            }
 
-                // Close the database connection
-                $conn->close();
-                ?>
-            </div>
+            $conn->close();
+            ?>
         </div>
+        <button class="slider-btn next">›</button>
+    </div>
+</div>
+<br><br>
+
+<script>
+    const slider = document.querySelector(".feedback-slider");
+const prevBtn = document.querySelector(".slider-btn.prev");
+const nextBtn = document.querySelector(".slider-btn.next");
+
+let currentIndex = 0; // Index du slide actuel
+const itemsPerSlide = 6; // Nombre de feedbacks par slide
+const totalItems = document.querySelectorAll(".feedback-card").length;
+const totalSlides = Math.ceil(totalItems / itemsPerSlide); // Nombre total de slides
+
+// Fonction pour aller au slide précédent
+prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateSliderPosition();
+    }
+});
+
+// Fonction pour aller au slide suivant
+nextBtn.addEventListener("click", () => {
+    if (currentIndex < totalSlides - 1) {
+        currentIndex++;
+        updateSliderPosition();
+    }
+});
+
+// Met à jour la position du slider
+function updateSliderPosition() {
+    const slideWidth = slider.parentElement.offsetWidth; // Largeur du container
+    slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+</script>
+
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
