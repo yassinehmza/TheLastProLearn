@@ -104,40 +104,47 @@
         </div>
 
         <!-- Feedback Section -->
-        <div class="feedback-container">
-            <?php
-            // Include database connection
-            include './backend/db.php';
+        <div class="diffSection" id="feedback_section">
+            <center><p class="feedback-title">Student Feedback</p></center>
+            <div class="feedback-container">
+                <?php
+                // Include database connection
+                include './backend/db.php';
 
-            // Query to fetch feedback data
-            $sql = "SELECT id, name, your_feedback, rate_your_experience, created_at FROM feedback";
-            $result = $conn->query($sql);
+                // Query to fetch feedback data
+                $sql = "SELECT id, name, your_feedback, rate_your_experience, created_at FROM feedback";
+                $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                // Loop through feedback and display each one as a card
-                while ($row = $result->fetch_assoc()) {
-                    echo "<div class='feedback-card'>
-                            <div class='card-header'>
-                                {$row['name']}
-                            </div>
-                            <div class='card-content'>
-                                <p>{$row['your_feedback']}</p>
-                            </div>
-                            <div class='card-rating'>
-                                Rating: {$row['rate_your_experience']}
-                            </div>
-                            <div class='card-date'>
-                                Submitted at: {$row['created_at']}
-                            </div>
-                        </div>";
+                if ($result->num_rows > 0) {
+                    echo "<div class='feedback-row'>";
+                    // Loop through feedback and display each one as a card
+                    while ($row = $result->fetch_assoc()) {
+                        // Convert rating to stars
+                        $stars = str_repeat('★', intval($row['rate_your_experience'])) . 
+                                str_repeat('☆', 5 - intval($row['rate_your_experience']));
+                        
+                        echo "<div class='feedback-card'>
+                                <div class='card-header'>
+                                    <h3>{$row['name']}</h3>
+                                    <div class='stars'>{$stars}</div>
+                                </div>
+                                <div class='card-content'>
+                                    <p>{$row['your_feedback']}</p>
+                                </div>
+                                <div class='card-footer'>
+                                    <span>{$row['created_at']}</span>
+                                </div>
+                            </div>";
+                    }
+                    echo "</div>";
+                } else {
+                    echo "<p>No feedbacks found. Be the first to share your feedback!</p>";
                 }
-            } else {
-                echo "<p>No feedbacks found. Be the first to share your feedback!</p>";
-            }
 
-            // Close the database connection
-            $conn->close();
-            ?>
+                // Close the database connection
+                $conn->close();
+                ?>
+            </div>
         </div>
 
         <!-- Contact Section -->

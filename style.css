@@ -153,32 +153,6 @@ main {
     box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        background-color: #FA4B37;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 10px 0;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .course-item {
-        width: 100%;
-    }
-}
-
 /* Star Rating */
 .star-rating {
     display: flex;
@@ -428,81 +402,125 @@ form textarea {
     cursor: pointer;
 }
 
-/* Feedback */
-.title2 {
-    text-align: center;
-    margin: 40px 0;
+/* Feedback Section */
+.diffSection #feedback_section {
+    padding: 50px 20px;
+    background-color: #f8f9fa;
 }
 
-.shortdesc2 {
-    text-align: center;
-    margin-bottom: 20px;
+.feedback-title {
+    font-size: 2.5em;
+    color: #2E3D49;
+    margin-bottom: 40px;
 }
 
-.feedbox {
+.feedback-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.feedback-row {
     display: flex;
-    justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 20px;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    animation: moveLeftToRight 1s ease-in-out;
-    scroll-snap-type: x mandatory;
+    justify-content: center;
 }
 
-/* Feedback Card Styling */
 .feedback-card {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
     width: 300px;
-    max-width: 100%;
-    transform: translateX(-100%);
-    animation: slideInFromLeft 1s forwards;
-    scroll-snap-align: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.5s ease forwards;
 }
 
-.feedback-card h3 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
+.feedback-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.feedback-card .feedback-text {
-    margin: 10px 0;
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-header h3 {
+    font-size: 1.2em;
+    color: #2E3D49;
+    margin: 0;
+}
+
+.stars {
+    color: #FFD700;
+    font-size: 1.1em;
+    letter-spacing: 2px;
+}
+
+.card-content {
+    margin-bottom: 15px;
+}
+
+.card-content p {
     color: #555;
+    line-height: 1.6;
+    font-size: 0.95em;
 }
 
-.feedback-card .rating {
-    margin: 10px 0;
-}
-
-.feedback-card .submitted-at {
-    font-size: 12px;
-    color: #777;
-}
-
-/* Rating Stars */
-.rating {
-    font-size: 18px;
-    color: #ff9800;
+.card-footer {
+    color: #888;
+    font-size: 0.85em;
+    text-align: right;
 }
 
 /* Animations */
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-100%);
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    100% {
-        transform: translateX(0);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@keyframes moveLeftToRight {
-    0% {
-        transform: translateX(-100%);
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #FA4B37;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
     }
-    100% {
-        transform: translateX(0);
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .course-item {
+        width: 100%;
+    }
+
+    .feedback-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .feedback-title {
+        font-size: 2em;
     }
 }
