@@ -12,15 +12,15 @@
 <body>
     <header>
         <nav>
-            <a href="../index.html"><img src="../images/icon/logo.png" style="width: 200px;" alt="Logo"></a>
+            <a href="index.php"><img src="../images/icon/logo.png" style="width: 200px;" alt="Logo"></a>
             <span class="hamburger" onclick="toggleMenu()">☰</span>
             <ul id="navLinks">
-                <li><a href="./index.html" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.php" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="/pages/showallcourses.html" onclick="showSection('courses')"><i class="fas fa-book"></i> Courses</a></li>
                 <li id="loginButton"><a href="login/login.html" onclick="showSection('login')"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                <li id="signupButton"><a href="register/register.html" onclick="showSection('signup')"><i class="fas fa-user-plus"></i> Signup</a></li>
-                <li id="dashboardButton" style="display: none;"><a href="dashboard.html" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="#feedback" onclick="showSection('feedback')"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+                <li id="signupButton"><a href="../register/register.html" onclick="showSection('signup')"><i class="fas fa-user-plus"></i> Signup</a></li>
+                <li id="dashboardButton" style="display: none;"><a href="../dashboard/dashboard.html" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#feedback_section" onclick="showSection('feedback')"><i class="fas fa-comment-dots"></i> Feedback</a></li>
                 <li><a href="#contact" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </nav>
