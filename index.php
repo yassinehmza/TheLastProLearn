@@ -33,22 +33,24 @@
             <p>Learn and practice your skills with us.</p>
             <a href="./login/login.html" class="get-started" onclick="showSection('signup')">Get Started</a>
         </section>
-
+        <br><br><br>
         <!-- Some Popular Subjects -->
-        <div class="title">
-            <span>Popular Subjects on ProLearn</span>
-        </div>
-
-        <div class="course">
-            <div class="cbox">
-                <div class="det"><a href="Cours/quiz.html"><img src="images/courses/d1.png" alt="Daily Quiz">Daily Quiz</a></div>
-            </div>
-            <div class="cbox">
-                <div class="det"><a href="Cours/computer_courses.html"><img src="images/courses/computer.png" alt="Computer Courses">Computer Courses</a></div>
-                <div class="det"><a href="pages/DataStructures.html"><img src="images/courses/data.png" alt="Data Structures">Data Structures</a></div>
-                <div class="det"><a href="pages/Algorithm.html"><img src="images/courses/algo.png" alt="Algorithm">Algorithm</a></div>
-            </div>
-        </div>
+	<div class="title">
+		<span>Popular Subjects on LearnEd</span>
+	</div>
+	<br><br>
+	<div class="course">
+		<center><div class="cbox">
+		<div class="det"><a href="Cours/quiz.html"><img src="images/courses/d1.png">Daily Quiz</a></div>
+		</div></center>
+		<div class="cbox">
+		<div class="det"><a href="Cours/computer_courses.html"><img src="images/courses/computer.png" alt="Computer Courses">Computer Courses</a></div>
+		<div class="det"><a href="pages/DataStructures.html"><img src="images/courses/data.png" alt="Data Structures">Data Structures</a></div>
+		<div class="det"><a href="pages/Algorithm.html"><img src="images/courses/algo.png" alt="Algorithm">Algorithm</a></div>
+		
+		</div>
+	</div>
+        
 
         <!-- ABOUT Section -->
         <div class="diffSection" id="about_section">
@@ -84,7 +86,7 @@
             <center><p class="contact-title">Contact Us</p></center>
             <div class="back-contact">
                 <div class="cc">
-                    <form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
+                    <form action="yassine5.hamza5@gmail.com" method="post" enctype="text/plain">
                         <label>First Name <span class="imp">*</span></label>
                         <label style="margin-left: 185px">Last Name <span class="imp">*</span></label><br>
                         <center>
