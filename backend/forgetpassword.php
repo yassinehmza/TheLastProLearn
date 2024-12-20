@@ -1,8 +1,10 @@
 <?php
-include 'db.php';
+include 'db.php'; // Include your database connection file
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
+
+    // Check if the email exists in the database
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $email);
@@ -10,20 +12,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Generate reset token
+        // Generate a reset token
         $token = bin2hex(random_bytes(32));
         $expiry = date("Y-m-d H:i:s", strtotime("+1 hour"));
 
-        // Store token in `password_resets` table
+        // Save the token in the database
         $insertQuery = "INSERT INTO password_resets (email, token, expiry) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($insertQuery);
         $stmt->bind_param("sss", $email, $token, $expiry);
         $stmt->execute();
 
-        // Send reset email
+        // Create a reset link
         $resetLink = "http://localhost/your_project_directory/resetpassword.php?token=" . $token;
+
+        // Send the email
         $subject = "Réinitialisation de votre mot de passe";
-        $message = "Cliquez sur le lien suivant pour réinitialiser votre mot de passe : " . $resetLink;
+        $message = "Bonjour,\n\nCliquez sur le lien suivant pour réinitialiser votre mot de passe :\n\n" . $resetLink;
         $headers = "From: noreply@yourwebsite.com";
 
         if (mail($email, $subject, $message, $headers)) {
