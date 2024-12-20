@@ -4,21 +4,21 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
+    background-color: white;
     color: #333;
     scroll-behavior: smooth;
     box-sizing: border-box;
 }
 
 header {
-    background-color: #ffffff;
+    background-color: white;
     color: #333333; 
     padding: 15px 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     position: fixed;
     top: 0;
     width: 100%;
-    height: 40px;
+    height: 30px;
     z-index: 1050;
     display: flex;
     justify-content: space-between;
@@ -30,10 +30,11 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: white ;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 10px;
     font-weight: bold;
     color: #fff;
     margin-left: 20px;
@@ -57,7 +58,7 @@ nav a {
 
 nav a:hover {
     color: #FA4B37;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(141, 86, 86, 0.1);
 }
 
 .hamburger {
@@ -68,15 +69,37 @@ nav a:hover {
 }
 
 .welcome {
-    text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(to right, #FA4B37, #DF2771);
-    color: #fff;
-    margin-top: 70px;
-    width: 100%;
-    height: 350px;
-    border-radius: 10px;
+    text-align: left;
+    padding: 70px 20px;
+   /* background: linear-gradient(135deg, rgba(252, 163, 17, 0.1), rgba(230, 86, 19, 0.1)), 
+                url('./images/extra/f63ed508-6bb5-44e2-a5e3-58b9e98a44cc.jpeg');*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    color: black;
+    font-family: 'Merriweather', serif;
+    margin: 200px 40px 40px 40px;
+    width: 90%;
+    margin: 200px auto;
+    height: 360px; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(187, 70, 70, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
+.img img{
+    float: right;
+    margin-top: -150px;
+    width: 300px;
+    max-width: 50%;
+    border-radius: 10px; 
+    filter: drop-shadow(0 20px 10px rgba(0, 0, 0, 0.2)); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 40px;
+    margin-right: 90px;
+}
+
 
 .welcome h1 {
     font-size: 50px;
@@ -88,25 +111,32 @@ nav a:hover {
     font-size: 20px;
     margin-bottom: 30px;
 }
-
 .get-started {
     padding: 12px 25px;
-    background-color: #ffcc00;
-    color: black;
+    background: linear-gradient(135deg, #e65613, #fca311);
+    color: white;
     text-decoration: none;
     border-radius: 50px;
-    font-weight: bold; 
+    font-weight: bold;
     font-size: 1rem;
+    margin-left: 60px;
     display: inline-block;
     text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     border: 2px solid transparent;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
 }
 
 .get-started:hover {
-    background-color: #e6b800;
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        background: linear-gradient(135deg, #fca311, #e65613); 
+        color: #000;
+        transform: translateY(-3px) scale(1.05); 
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); 
+        border: 2px solid white;
+    
 }
 
 .signup-form, .courses, .payment, .feedback, .contact {

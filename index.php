@@ -29,6 +29,9 @@
     <main>
         <!-- Home Section -->
         <section id="home" class="welcome">
+            <div class="img">
+                <img src="./images/extra/Code_on_t-shirt-removebg-preview.png" alt="">
+            </div>
             <h1>Welcome to ProLearn</h1>
             <p>Learn and practice your skills with us.</p>
             <a href="./login/login.html" class="get-started" onclick="showSection('signup')">Get Started</a>
