@@ -12,7 +12,7 @@
 <body>
     <header>
         <nav>
-            <a href="index.php"><img src="../images/icon/logo.png" style="width: 200px;" alt="Logo"></a>
+            <a href="index.php"><img src="../images/extra/ll.png" style="width: 200px;" alt="Logo"></a>
             <span class="hamburger" onclick="toggleMenu()">☰</span>
             <ul id="navLinks">
                 <li><a href="index.php" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
@@ -48,8 +48,7 @@
 		</div></center>
 		<div class="cbox">
 		<div class="det"><a href="Cours/computer_courses.html"><img src="images/courses/computer.png" alt="Computer Courses">Computer Courses</a></div>
-		<div class="det"><a href="pages/DataStructures.html"><img src="images/courses/data.png" alt="Data Structures">Data Structures</a></div>
-		<div class="det"><a href="pages/Algorithm.html"><img src="images/courses/algo.png" alt="Algorithm">Algorithm</a></div>
+		
 		
 		</div>
 	</div>
