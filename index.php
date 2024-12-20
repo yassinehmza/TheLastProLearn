@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
+    <header class="Header">
+        <nav id="navbar">
             <a href="index.php"><img src="../images/extra/ll.png" style="width: 200px;" alt="Logo"></a>
             <span class="hamburger" onclick="toggleMenu()">☰</span>
             <ul id="navLinks">
@@ -32,8 +32,8 @@
             <div class="img">
                 <img src="./images/extra/Code_on_t-shirt-removebg-preview.png" alt="">
             </div>
-            <h1>Welcome to ProLearn</h1>
-            <p>Learn and practice your skills with us.</p>
+            <h1>Empower Your Future Learn It
+    Skils Anytime,Anywhere!</h1>
             <a href="./login/login.html" class="get-started" onclick="showSection('signup')">Get Started</a>
         </section>
         <br><br><br>

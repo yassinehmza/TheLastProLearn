@@ -65,38 +65,39 @@ body {
     top: 0;
     z-index: 1000;
 }
-
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white ;
 }
 
 .logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #fff;
-
+  font-size: 10px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 20px;
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+  list-style: none;
+  display: flex;
+  gap: 5px;
 }
 
 nav a {
-    text-decoration: none;
-    color: #121111;
-    font-weight: 500;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+  color: #333333; 
+  font-weight: 500;
+  padding: 10px 20px; 
+  margin-right:45px; 
+  border-radius: 8px; 
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 nav a:hover {
-    
-    color: #FA4B37;
+  color: #FA4B37;
+  box-shadow: 0 4px 6px rgba(141, 86, 86, 0.1);
 }
 .hamburger {
   display: none;
