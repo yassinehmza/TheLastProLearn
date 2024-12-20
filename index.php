@@ -54,7 +54,7 @@
 
         <!-- ABOUT Section -->
         <div class="diffSection" id="about_section">
-            <center><p class="about-title">About</p></center>
+            <center><h1 class="about-title">About</></center>
             <div class="about-content">
                 <div class="side-image">
                     <img class="sideImage" src="images/extra/e3.jpg" alt="About Us">

@@ -6,11 +6,26 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f7f7f7;
+    background :linear-gradient(35deg , black,#FF6A00 ,#EE0979 , #a10fdf ,white);
+    width: 100%;
+    background-size: 300% 300%;
+    
+  }
+  @keyframes color {
+    0%{
+      background-position: 0 50%;
+    }
+    50%{
+      background-position: 100 50%;
+    }
+    010%{
+      background-position: 0 50%;
+    }
+
   }
   form {
     background: white;
-    padding: 20px;
+    padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
