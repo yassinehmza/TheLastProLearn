@@ -6,7 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background :linear-gradient(35deg , black,#FF6A00 ,#EE0979 , #a10fdf ,white);
+    
     width: 100%;
     background-size: 300% 300%;
     
@@ -24,7 +24,7 @@ body {
 
   }
   form {
-    background: white;
+    background: linear-gradient(35deg ,#FF6A00 ,#EE0979 );
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -37,26 +37,24 @@ body {
     margin-top: 10px;
   }
   input[type="email"], input[type="password"], button {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+    
   }
   button {
-    background-color: #FA4B37;
+    background-color: black;
     color: white;
     border: none;
     margin-top: 15px;
     cursor: pointer;
   }
-  button:hover {
-    background-color: #FA4B37;
-  }
+  
   
   header {
-    /*background: linear-gradient(to right, #FA4B37, #DF2771);*/
     background-color: #f4f4f4;
     padding: 15px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -64,7 +62,7 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
-}
+    
 nav {
   display: flex;
   justify-content: space-between;
@@ -104,4 +102,8 @@ nav a:hover {
   font-size: 28px;
   cursor: pointer;
   color: #fff;
+}
+.the-container {
+  background-color: #FA4B37;
+
 }
