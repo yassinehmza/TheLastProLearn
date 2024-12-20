@@ -228,7 +228,6 @@ main {
     width: 250px;
     height: 80px;
     margin: 10px;
-    background: #fff;
     cursor: pointer;
 }
 
@@ -266,141 +265,145 @@ main {
     color: #2E3D49;
 }
 
-/* About */
+/*title*/
+.title {
+    margin-top: 0px; 
+   font-family: 'Open Sans', sans-serif;
+   font-size: 30px;
+   text-align: center;
+   color: #2E3D49;
+}   
+/*ABOUT*/
+.about-title {
+    margin-top: 0px; 
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    color: #2E3D49;
+
+}
 .about-content {
-    width: 100%;
-    position: relative;
-    justify-content: center;
-    flex-wrap: wrap;
-    display: flex;
-    align-items: center;
+	width: 100%;
+	position: relative;
+	justify-content: center;
+	flex-wrap: wrap;
+	display: flex;
+	align-items: center;
 }
-
 .about-content .side-text {
-    width: 550px;
-    padding: 50px 40px;
-    background: #fff;
-    box-shadow: 2px 0 100px rgba(0,0,0,0.3);
-    border-radius: 5px;
-    text-align: justify;
-    line-height: 22px;
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: 1s ease-in-out;
+	width: 500px;
+	padding: 20px 20px;
+	background: #fff;
+	box-shadow: 2px 0 100px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	text-align: justify;
+	line-height: 16px;
+	opacity: 0;
+	transform: translateX(-100px);
+	transition: 1s ease-in-out;
 }
-
 .about-content .side-text-appear {
-    opacity: 1;
-    transform: translateX(0px);
+	opacity: 1;
+	transform: translateX(0px);
 }
-
 .about-content .side-text h2 {
-    padding: 10px;
+	padding: 10px;
 }
-
 .about-content .side-text p {
-    padding: 10px;
+	padding: 10px;
 }
-
 .about-content .side-image img {
-    width: 90%;
-    border-radius: 5px;
+	width: 90%;
+	border-radius: 5px;
 }
-
 .sideImage {
-    transform: translateX(100px);
-    opacity: 0;
-    transition: .8s ease-in-out;
+	transform: translateX(100px);
+	opacity: 0;
+	transition: .8s ease-in-out;
 }
-
 .sideImage-appear {
-    opacity: 1;
-    transform: translateX(0px);
+	opacity: 1;
+	transform: translateX(0px);
 }
 
-/* Contact Us Section */
-.csec {
-    background-attachment: fixed;
-    position: absolute;
-    width: 100%;
-    height: 250px;
-    top: 200px;
-    content: '';
-    transform-origin: top right;
-    transform: skewY(-10deg);
-    z-index: -1;
+
+/* CONTACT US Section */
+#contactus_section {
+    padding: 30px 0;
+    background: #fff;
+}
+
+.contact-title {
+    font-size: 2em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .back-contact {
-    margin-top: 0px;
-    transform: translateY(-50px);
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .cc {
-    width: 400px;
-    height: 500px;
-    border-radius: 10px;
-    justify-content: center;
-    box-shadow: 1px 1px 20px rgba(0,0,0,0.4);
     background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.cc form {
-    margin: 5%;
-    margin-top: 40px;
-    width: 90%;
-    height: 90%;
-}
-
-.cc form label {
-    position: absolute;
-    color: #2E3D49;
-    font-size: 10px;
-    font-weight: 800;
-}
-
-.cc form input {
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: inset 0 0 5px lightgray;
-    border: 1px solid rgba(0,0,0,0.2);
-    outline: none;
-    color: #2E3D49;
+form label {
+    display: block;
+    font-size: 0.9em;
+    color: #333;
+    margin-bottom: 6px;
     font-weight: 600;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9em;
+    color: #333;
+    box-sizing: border-box;
+}
+
+form input[type="text"], form input[type="email"] {
+    height: 35px;
+}
+
+form textarea {
+    height: 80px;
+    resize: none;
+}
+
+#csubmit {
+    background: linear-gradient(to right, #FF6A00, #EE0979);
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+}
+
+#csubmit:hover {
+    background: linear-gradient(to left, #FF6A00, #EE0979);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .imp {
     color: red;
 }
 
-form textarea {
-    width: 100%;
-    height: 100px;
-    box-shadow: inset 0 0 5px lightgray;
-    border: 1px solid rgba(0,0,0,0.2);
-    border-radius: 5px;
-    outline: none;
-    color: #2E3D49;
-    font-weight: 600;
-    padding: 15px;
-}
-
-#csubmit {
-    margin-top: 20px;
-    background: linear-gradient(to right, #FA4B37, #DF2771);
-    border-radius: 5px;
-    border-style: none;
-    outline: none;
-    width: 100%;
-    padding: 15px 25px;
-    color: #fff;
-    font-size: 12px;
-    cursor: pointer;
-}
 
 /* Feedback Section */
 .diffSection #feedback_section {
@@ -415,24 +418,36 @@ form textarea {
 }
 
 .feedback-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.feedback-row {
+/* Slider Styles */
+.feedback-slider {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+    width: max-content;
 }
 
+.feedback-slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+/* Feedback Card Styles */
 .feedback-card {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     padding: 25px;
-    width: 300px;
+    width: calc(100% / 6 - 10px); /* 6 cartes par slide avec un espace */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeInUp 0.5s ease forwards;
 }
@@ -476,6 +491,47 @@ form textarea {
     font-size: 0.85em;
     text-align: right;
 }
+
+/* Slider Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.slider-btn.prev {
+    left: 10px;
+}
+
+.slider-btn.next {
+    right: 10px;
+}
+
+.slider-btn:hover {
+    background-color: #333;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 
 /* Animations */
 @keyframes fadeInUp {

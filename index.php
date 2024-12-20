@@ -12,14 +12,14 @@
 <body>
     <header>
         <nav>
-            <a href="../index.html"><img src="../images/icon/logo.png" style="width: 200px;" alt="Logo"></a>
+            <a href="index.php"><img src="../images/icon/logo.png" style="width: 200px;" alt="Logo"></a>
             <span class="hamburger" onclick="toggleMenu()">☰</span>
             <ul id="navLinks">
-                <li><a href="./index.html" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.php" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="/pages/showallcourses.html" onclick="showSection('courses')"><i class="fas fa-book"></i> Courses</a></li>
                 <li id="loginButton"><a href="login/login.html" onclick="showSection('login')"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                <li id="signupButton"><a href="register/register.html" onclick="showSection('signup')"><i class="fas fa-user-plus"></i> Signup</a></li>
-                <li id="dashboardButton" style="display: none;"><a href="dashboard.html" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li id="signupButton"><a href="../register/register.html" onclick="showSection('signup')"><i class="fas fa-user-plus"></i> Signup</a></li>
+                <li id="dashboardButton" style="display: none;"><a href="../dashboard/dashboard.html" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="#feedback_section" onclick="showSection('feedback')"><i class="fas fa-comment-dots"></i> Feedback</a></li>
                 <li><a href="#contact" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
@@ -33,22 +33,24 @@
             <p>Learn and practice your skills with us.</p>
             <a href="./login/login.html" class="get-started" onclick="showSection('signup')">Get Started</a>
         </section>
-
+        <br><br><br>
         <!-- Some Popular Subjects -->
-        <div class="title">
-            <span>Popular Subjects on ProLearn</span>
-        </div>
-
-        <div class="course">
-            <div class="cbox">
-                <div class="det"><a href="Cours/quiz.html"><img src="images/courses/d1.png" alt="Daily Quiz">Daily Quiz</a></div>
-            </div>
-            <div class="cbox">
-                <div class="det"><a href="Cours/computer_courses.html"><img src="images/courses/computer.png" alt="Computer Courses">Computer Courses</a></div>
-                <div class="det"><a href="pages/DataStructures.html"><img src="images/courses/data.png" alt="Data Structures">Data Structures</a></div>
-                <div class="det"><a href="pages/Algorithm.html"><img src="images/courses/algo.png" alt="Algorithm">Algorithm</a></div>
-            </div>
-        </div>
+	<div class="title">
+		<span>Popular Subjects on LearnEd</span>
+	</div>
+	<br><br>
+	<div class="course">
+		<center><div class="cbox">
+		<div class="det"><a href="Cours/quiz.html"><img src="images/courses/d1.png">Daily Quiz</a></div>
+		</div></center>
+		<div class="cbox">
+		<div class="det"><a href="Cours/computer_courses.html"><img src="images/courses/computer.png" alt="Computer Courses">Computer Courses</a></div>
+		<div class="det"><a href="pages/DataStructures.html"><img src="images/courses/data.png" alt="Data Structures">Data Structures</a></div>
+		<div class="det"><a href="pages/Algorithm.html"><img src="images/courses/algo.png" alt="Algorithm">Algorithm</a></div>
+		
+		</div>
+	</div>
+        
 
         <!-- ABOUT Section -->
         <div class="diffSection" id="about_section">
@@ -84,7 +86,7 @@
             <center><p class="contact-title">Contact Us</p></center>
             <div class="back-contact">
                 <div class="cc">
-                    <form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
+                    <form action="yassine5.hamza5@gmail.com" method="post" enctype="text/plain">
                         <label>First Name <span class="imp">*</span></label>
                         <label style="margin-left: 185px">Last Name <span class="imp">*</span></label><br>
                         <center>
@@ -102,50 +104,83 @@
                 </div>
             </div>
         </div>
-
-        <!-- Feedback Section -->
+<!--Feedack-->
         <div class="diffSection" id="feedback_section">
-            <center><p class="feedback-title">Student Feedback</p></center>
-            <div class="feedback-container">
-                <?php
-                // Include database connection
-                include './backend/db.php';
+    <center><p class="feedback-title">Student Feedback</p></center>
+    <div class="feedback-container">
+        <button class="slider-btn prev">‹</button>
+        <div class="feedback-slider">
+            <!-- PHP générera ici les cartes feedback -->
+            <?php
+            include './backend/db.php';
 
-                // Query to fetch feedback data
-                $sql = "SELECT id, name, your_feedback, rate_your_experience, created_at FROM feedback";
-                $result = $conn->query($sql);
+            $sql = "SELECT id, name, your_feedback, rate_your_experience, created_at FROM feedback";
+            $result = $conn->query($sql);
 
-                if ($result->num_rows > 0) {
-                    echo "<div class='feedback-row'>";
-                    // Loop through feedback and display each one as a card
-                    while ($row = $result->fetch_assoc()) {
-                        // Convert rating to stars
-                        $stars = str_repeat('★', intval($row['rate_your_experience'])) . 
-                                str_repeat('☆', 5 - intval($row['rate_your_experience']));
-                        
-                        echo "<div class='feedback-card'>
-                                <div class='card-header'>
-                                    <h3>{$row['name']}</h3>
-                                    <div class='stars'>{$stars}</div>
-                                </div>
-                                <div class='card-content'>
-                                    <p>{$row['your_feedback']}</p>
-                                </div>
-                                <div class='card-footer'>
-                                    <span>{$row['created_at']}</span>
-                                </div>
-                            </div>";
-                    }
-                    echo "</div>";
-                } else {
-                    echo "<p>No feedbacks found. Be the first to share your feedback!</p>";
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $stars = str_repeat('★', intval($row['rate_your_experience'])) . 
+                             str_repeat('☆', 5 - intval($row['rate_your_experience']));
+
+                    echo "<div class='feedback-card'>
+                            <div class='card-header'>
+                                <h3>{$row['name']}</h3>
+                                <div class='stars'>{$stars}</div>
+                            </div>
+                            <div class='card-content'>
+                                <p>{$row['your_feedback']}</p>
+                            </div>
+                            <div class='card-footer'>
+                                <span>{$row['created_at']}</span>
+                            </div>
+                          </div>";
                 }
+            } else {
+                echo "<p>No feedbacks found. Be the first to share your feedback!</p>";
+            }
 
-                // Close the database connection
-                $conn->close();
-                ?>
-            </div>
+            $conn->close();
+            ?>
         </div>
+        <button class="slider-btn next">›</button>
+    </div>
+</div>
+<br><br>
+
+<script>
+    const slider = document.querySelector(".feedback-slider");
+const prevBtn = document.querySelector(".slider-btn.prev");
+const nextBtn = document.querySelector(".slider-btn.next");
+
+let currentIndex = 0; // Index du slide actuel
+const itemsPerSlide = 6; // Nombre de feedbacks par slide
+const totalItems = document.querySelectorAll(".feedback-card").length;
+const totalSlides = Math.ceil(totalItems / itemsPerSlide); // Nombre total de slides
+
+// Fonction pour aller au slide précédent
+prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateSliderPosition();
+    }
+});
+
+// Fonction pour aller au slide suivant
+nextBtn.addEventListener("click", () => {
+    if (currentIndex < totalSlides - 1) {
+        currentIndex++;
+        updateSliderPosition();
+    }
+});
+
+// Met à jour la position du slider
+function updateSliderPosition() {
+    const slideWidth = slider.parentElement.offsetWidth; // Largeur du container
+    slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+</script>
+
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
