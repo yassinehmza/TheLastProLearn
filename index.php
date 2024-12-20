@@ -45,8 +45,7 @@
 		</div></center>
 		<div class="cbox">
 		<div class="det"><a href="Cours/computer_courses.html"><img src="images/courses/computer.png" alt="Computer Courses">Computer Courses</a></div>
-		<div class="det"><a href="pages/DataStructures.html"><img src="images/courses/data.png" alt="Data Structures">Data Structures</a></div>
-		<div class="det"><a href="pages/Algorithm.html"><img src="images/courses/algo.png" alt="Algorithm">Algorithm</a></div>
+		
 		
 		</div>
 	</div>

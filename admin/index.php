@@ -13,9 +13,81 @@ if (!isset($_SESSION['admin_logged_in'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <style>
+         /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+        
+        }
+
+    header {
+        background-color: #ffffff;
+        color: #333333; 
+        padding: 15px 30px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 40px;
+        z-index: 1050;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 5px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333333; 
+        font-weight: 500;
+        padding: 10px 20px; 
+        margin-right:45px; 
+        border-radius: 8px; 
+        transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    nav a:hover {
+        color: #FA4B37;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+     section {
+            background: whitesmoke;
+            padding: 40px;
+            border-radius: 10px;
+            width: 1000px;
+            margin-top: 170px;
+            text-align: center;
+            margin-left: 220px;
+    }
+
+    section h2 {
+            margin-top: 0;
+            font-size: 2em;
+            color: red;
+    }
+
+    section p {
+            line-height: 1.6;
+    }
+    </style>
 </head>
 <body>
-    <div class="container">
         <header>
             <h1>Admin Dashboard</h1>
             <nav>
@@ -32,6 +104,6 @@ if (!isset($_SESSION['admin_logged_in'])) {
             <h2>Welcome to the Admin Panel</h2>
             <p>Here you can manage courses, quizzes, and users for your e-learning site.</p>
         </section>
-    </div>
+    
 </body>
 </html>
