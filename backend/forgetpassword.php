@@ -1,6 +1,7 @@
 <?php
 include 'db.php'; // Include your database connection file
-
+ini_set('SMTP', '127.0.0.1');
+ini_set('smtp_port', '1025');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
 
