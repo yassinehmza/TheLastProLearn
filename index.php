@@ -21,7 +21,7 @@
                 <li id="signupButton"><a href="../register/register.html" onclick="showSection('signup')"><i class="fas fa-user-plus"></i> Signup</a></li>
                 <li id="dashboardButton" style="display: none;"><a href="../dashboard/dashboard.html" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="#feedback_section" onclick="showSection('feedback')"><i class="fas fa-comment-dots"></i> Feedback</a></li>
-                <li><a href="#contact" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="#contactus_section" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -89,18 +89,15 @@
             <div class="back-contact">
                 <div class="cc">
                     <form action="yassine5.hamza5@gmail.com" method="post" enctype="text/plain">
-                        <label>First Name <span class="imp">*</span></label>
-                        <label style="margin-left: 185px">Last Name <span class="imp">*</span></label><br>
-                        <center>
-                            <input type="text" name="fname" style="margin-right: 10px; width: 175px" required="required">
-                            <input type="text" name="lname" style="width: 175px" required="required"><br>
-                        </center>
+                        <label>First Name <span class="imp">*</span></label><br>
+                        <input type="text" name="fname" style="margin-right: 10px; width: 175px" required="required"><br>
+                        <label >Last Name <span class="imp">*</span></label><br>
+                        <input type="text" name="lname" style="width: 175px" required="required"><br>
+                    
                         <label>Email <span class="imp">*</span></label><br>
                         <input type="email" name="mail" style="width: 100%" required="required"><br>
                         <label>Message <span class="imp">*</span></label><br>
                         <input type="text" name="message" style="width: 100%" required="required"><br>
-                        <label>Additional Details</label><br>
-                        <textarea name="additional"></textarea><br>
                         <button type="submit" id="csubmit">Send Message</button>
                     </form>
                 </div>
@@ -108,7 +105,7 @@
         </div>
 <!--Feedack-->
 <div class="diffSection" id="feedback_section">
-    <center><p class="feedback-title">Student Feedback</p></center>
+    <center><p class="feedback-title"><b> Student Feedback</b></p></center>
     <div class="feedback-container">
         <button class="slider-btn prev" onclick="slide(-1)">‹</button>
         <div class="feedback-slider">
@@ -169,26 +166,6 @@ function slide(direction) {
 
 
 </script>
-
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <h2>Contact Us</h2>
-            <p>If you have any questions, feel free to reach out!</p>
-            <form>
-                <label for="contact-name">Your Name:</label>
-                <input type="text" id="contact-name" name="name" required>
-
-                <label for="contact-email">Your Email:</label>
-                <input type="email" id="contact-email" name="email" required>
-
-                <label for="contact-message">Message:</label>
-                <textarea id="contact-message" name="message" rows="4" required></textarea>
-
-                <button type="submit" class="btn-submit">Send Message</button>
-            </form>
-        </section>
-    </main>
 
     <footer>
         <p>&copy; 2024 ProLearn. All rights reserved.</p>
