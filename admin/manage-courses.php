@@ -135,9 +135,7 @@ section table tbody tr:hover {
     padding: 10px;
     border-radius: 20px;
 }
-#add :hover{
-    
-}
+
 
     </style>
 </head>
