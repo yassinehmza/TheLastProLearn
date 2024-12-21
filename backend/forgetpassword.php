@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($result->num_rows > 0) {
             // Generate secure random token
             $token = bin2hex(random_bytes(32));
-            $expiry = date('Y-m-d H:i:s', time() + (15 * 60));
+            $expiry = date('Y-m-d H:i:s', time() + (60 * 60));
             
             // Store token in database
             $insertQuery = "INSERT INTO password_resets (email, token, expiry) VALUES (?, ?, ?)";

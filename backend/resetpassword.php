@@ -5,9 +5,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $token = $_POST['token'];
     $newPassword = $_POST['password'];
 
-    // Verify the token (fetch the most recent token for this request)
-    $query = "SELECT * FROM password_resets WHERE token = ? AND expiry > NOW() ORDER BY expiry DESC LIMIT 1";
+    // Debug: Check the token
+    var_dump($token);
+
+    // Verify the token (only unused tokens that are not expired)
+    $query = "SELECT * FROM password_resets WHERE token = ? AND expiry > NOW() AND used = 0 ORDER BY expiry DESC LIMIT 1";
     $stmt = $conn->prepare($query);
+
+    if (!$stmt) {
+        die("Query preparation failed: " . $conn->error);
+    }
+
     $stmt->bind_param("s", $token);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -16,6 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = $result->fetch_assoc();
         $email = $row['email'];
 
+        // Debug: Check the `used` and `expiry` values
+        echo "Used: " . $row['used'] . "<br>";
+        echo "Expiry: " . $row['expiry'] . "<br>";
+
         // Update the user's password
         $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
         $updateQuery = "UPDATE users SET password = ? WHERE email = ?";
@@ -23,14 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("ss", $hashedPassword, $email);
         $stmt->execute();
 
-        // Delete all tokens for this email to prevent re-use
-        $deleteQuery = "DELETE FROM password_resets WHERE email = ?";
-        $stmt = $conn->prepare($deleteQuery);
-        $stmt->bind_param("s", $email);
+        // Mark the token as used
+        $markUsedQuery = "UPDATE password_resets SET used = 1 WHERE token = ?";
+        $stmt = $conn->prepare($markUsedQuery);
+        $stmt->bind_param("s", $token);
         $stmt->execute();
 
         echo "Votre mot de passe a été réinitialisé avec succès.";
     } else {
+        // Debug: Check if no rows matched
         echo "Le lien de réinitialisation est invalide ou a expiré.";
     }
 }
