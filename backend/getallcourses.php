@@ -1,19 +1,25 @@
 <?php
 include 'db.php'; 
 
-header('Content-Type: application/json');
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
+// Check database connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+header('Content-Type: application/json');
 
 $sql = "SELECT 
             courses.id, 
             courses.title, 
             courses.description, 
             courses.price, 
-            CONCAT(users.prenom, ' ', users.nom) AS professor_name, 
-            courses.created_at 
-        FROM courses
-        JOIN users ON courses.professor_id = users.id
-        WHERE users.role = 'Professeur'";
+            courses.created_at,
+            courses.updated_at
+        FROM courses";
 
 $result = $conn->query($sql);
 
@@ -25,12 +31,14 @@ if ($result->num_rows > 0) {
             'title' => $row['title'],
             'description' => $row['description'],
             'price' => $row['price'],
-            'professor' => $row['professor_name'],
-            'created_at' => $row['created_at']
+            'created_at' => $row['created_at'],
+            'updated_at' => $row['updated_at']
         ];
     }
+    echo json_encode($courses); // Output the courses data as JSON
+} else {
+    echo json_encode(['message' => 'No courses found.']); // Handle empty results
 }
 
-echo json_encode($courses);
 $conn->close();
 ?>

@@ -2,11 +2,8 @@
 include 'db.php'; // Include your database connection file
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $token = $_POST['token'];
+    $token = filter_var($_POST['token'], FILTER_SANITIZE_NUMBER_INT); // Ensure the token is numeric
     $newPassword = $_POST['password'];
-
-    // Debug: Check the token
-    var_dump($token);
 
     // Verify the token (only unused tokens that are not expired)
     $query = "SELECT * FROM password_resets WHERE token = ? AND expiry > NOW() AND used = 0 ORDER BY expiry DESC LIMIT 1";
@@ -24,10 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = $result->fetch_assoc();
         $email = $row['email'];
 
-        // Debug: Check the `used` and `expiry` values
-        echo "Used: " . $row['used'] . "<br>";
-        echo "Expiry: " . $row['expiry'] . "<br>";
-
         // Update the user's password
         $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
         $updateQuery = "UPDATE users SET password = ? WHERE email = ?";
@@ -41,10 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("s", $token);
         $stmt->execute();
 
-        echo "Votre mot de passe a été réinitialisé avec succès.";
+        echo json_encode(['success' => true, 'message' => 'Votre mot de passe a été réinitialisé avec succès.']);
     } else {
-        // Debug: Check if no rows matched
-        echo "Le lien de réinitialisation est invalide ou a expiré.";
+        echo json_encode(['success' => false, 'message' => 'Le lien de réinitialisation est invalide ou a expiré.']);
     }
 }
 ?>

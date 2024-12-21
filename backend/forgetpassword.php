@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $stmt->get_result();
         
         if ($result->num_rows > 0) {
-            // Generate secure random token
-            $token = bin2hex(random_bytes(32));
+            // Generate numeric token
+            $token = random_int(1000000000, 9999999999); // 10-digit numeric token
             $expiry = date('Y-m-d H:i:s', time() + (60 * 60));
             
             // Store token in database
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->isHTML(true);
                 $mail->Subject = 'Password Reset Request';
                 
-                // Use token instead of email in reset link
+                // Use numeric token in reset link
                 $resetLink = "http://localhost:3000/pages/resetpassword.html?token=" . urlencode($token);
                 
                 $mail->Body = '
