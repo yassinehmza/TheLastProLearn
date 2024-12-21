@@ -33,13 +33,13 @@
                 <img src="./images/extra/Code_on_t-shirt-removebg-preview.png" alt="">
             </div>
             <h1>Empower Your Future <br>Learn It
-    Skills <br> Anytime,Anywhere!</h1>
+    Skills <br> Anytime , Anywhere!</h1>
             <a href="./login/login.html" class="get-started" onclick="showSection('signup')">Get Started</a>
         </section>
         <br><br><br>
         <!-- Some Popular Subjects -->
 	<div class="title">
-		<span>Popular Subjects on LearnEd</span>
+		<span>Popular Subjects on ProLearn</span>
 	</div>
 	<br><br>
 	<div class="course">

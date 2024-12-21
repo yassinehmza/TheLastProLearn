@@ -143,7 +143,7 @@ $result = mysqli_query($conn, $query);
                     <li><a href="index.php">Dashboard</a></li>
                     <li><a href="manage-courses.php">Manage Courses</a></li>
                     <li><a href="manage-quizzes.php">Manage Quizzes</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="../backend/logout.php">Logout</a></li>
                 </ul>
             </nav>
         </header>

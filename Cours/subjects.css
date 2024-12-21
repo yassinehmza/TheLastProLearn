@@ -559,12 +559,14 @@ footer .btn:hover {
 	}
 }
 .card {
-    width: 300px;
-    height: 200px;
+    width: 1200px;
+    height: 350px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease;
     position: relative;
+	margin-top: 50px;
+	border-radius: 15px;
 }
 
 .card img {

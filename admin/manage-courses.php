@@ -150,7 +150,7 @@ section table tbody tr:hover {
                     <li><a href="index.php">Dashboard</a></li>
                     <li><a href="manage-quizzes.php">Manage Quizzes</a></li>
                     <li><a href="manage-users.php">Manage Users</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="../backend/logout.php">Logout</a></li>
                 </ul>
             </nav>
         </header>

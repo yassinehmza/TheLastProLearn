@@ -5,8 +5,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 125vh;
-    background-color: #f7f7f7;
+    height: 100vh;
+    background :linear-gradient(35deg , black,#FF6A00 ,#EE0979 , #a10fdf ,white);
+    width: 100%;
+    background-size: 300% 300%;
   }
   form {
     background: white;
@@ -22,7 +24,7 @@ body {
     margin-top: 10px;
   }
   select, input[type="text"], input[type="email"], input[type="password"], button {
-    width: 100%;
+    width:95%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
