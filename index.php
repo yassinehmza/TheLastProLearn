@@ -32,8 +32,8 @@
             <div class="img">
                 <img src="./images/extra/Code_on_t-shirt-removebg-preview.png" alt="">
             </div>
-            <h1>Empower Your Future Learn It
-    Skils Anytime,Anywhere!</h1>
+            <h1>Empower Your Future <br>Learn It
+    Skills <br> Anytime,Anywhere!</h1>
             <a href="./login/login.html" class="get-started" onclick="showSection('signup')">Get Started</a>
         </section>
         <br><br><br>
