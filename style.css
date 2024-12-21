@@ -99,11 +99,17 @@ nav a:hover {
     margin-right: 90px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 .welcome h1 {
-    font-size: 50px;
+    font-size: 2.5rem; 
     margin-bottom: 20px;
-    font-weight: bold;
+    font-weight: 700; 
+    font-family: Arial, sans-serif;    
+    text-transform: uppercase; /* Makes the title look striking */
+    letter-spacing: 2px; /* Adds spacing for a sleek look */
+    color: rgb(238, 97, 16); /* Use your brand color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 .welcome p {
@@ -221,6 +227,7 @@ main {
 .star-rating label:hover ~ label {
     color: #ffcc00;
 }
+
 
 .star-rating input:checked + label {
     color: #ffcc00;

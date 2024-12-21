@@ -18,7 +18,7 @@ $result = mysqli_query($conn, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Courses</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <style>
         /* Global Styles */
 body {
@@ -128,7 +128,17 @@ section table tbody tr:hover {
 }
 .ADD {
     color: #333333;
+    text-decoration: none;
+    
 }
+#add{
+    padding: 10px;
+    border-radius: 20px;
+}
+#add :hover{
+    
+}
+
     </style>
 </head>
 <body>
@@ -170,7 +180,7 @@ section table tbody tr:hover {
                     <?php endwhile; ?>
                 </tbody>
             </table>
-            <a class="ADD" href="add-course.php">Add New Course</a>
+            <button id="add"><a class="ADD" href="../pages/creercours.html">Add New Course</a></button>
         </section>
     </div>
 </body>
