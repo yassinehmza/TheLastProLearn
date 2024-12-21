@@ -180,7 +180,7 @@ section table tbody tr:hover {
                     <?php endwhile; ?>
                 </tbody>
             </table>
-            <button id="add"><a class="ADD" href="add-course.php">Add New Course</a></button>
+            <button id="add"><a class="ADD" href="../pages/creercours.html">Add New Course</a></button>
         </section>
     </div>
 </body>
