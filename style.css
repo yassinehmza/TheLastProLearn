@@ -456,7 +456,6 @@ form textarea {
     color: red;
 }
 
-
 /* Feedback Section */
 .diffSection #feedback_section {
     padding: 50px 20px;
@@ -478,30 +477,20 @@ form textarea {
     padding: 0 20px;
 }
 
-/* Slider Styles */
 .feedback-slider {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: max-content;
-}
-
-.feedback-slide {
-    flex: 0 0 100%;
-    display: flex;
-    justify-content: space-between;
     gap: 20px;
-    box-sizing: border-box;
+    width: 100%; /* Ajout pour flexibilité */
 }
 
-/* Feedback Card Styles */
 .feedback-card {
+    flex: 0 0 calc(25% - 20px); /* 25% pour 4 cartes par slide */
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     padding: 25px;
-    width: calc(100% / 6 - 10px); /* 6 cartes par slide avec un espace */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeInUp 0.5s ease forwards;
 }
 
 .feedback-card:hover {
@@ -509,39 +498,34 @@ form textarea {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.card-header {
+/* Slider navigation buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 15px;
+    cursor: pointer;
+    z-index: 10;
 }
 
-.card-header h3 {
-    font-size: 1.2em;
-    color: #2E3D49;
-    margin: 0;
+.slider-btn.prev {
+    left: 10px;
 }
 
-.stars {
-    color: #FFD700;
-    font-size: 1.1em;
-    letter-spacing: 2px;
+.slider-btn.next {
+    right: 10px;
 }
 
-.card-content {
-    margin-bottom: 15px;
-}
-
-.card-content p {
-    color: #555;
-    line-height: 1.6;
-    font-size: 0.95em;
-}
-
-.card-footer {
-    color: #888;
-    font-size: 0.85em;
-    text-align: right;
+.slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* Slider Navigation Buttons */
@@ -569,6 +553,11 @@ form textarea {
 
 .slider-btn:hover {
     background-color: #333;
+}
+.stars {
+    color: #FFD700;
+    font-size: 1.1em;
+    letter-spacing: 2px;
 }
 
 /* Animation */
