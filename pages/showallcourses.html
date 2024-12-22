@@ -6,14 +6,30 @@
   <title>Show All Courses</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/showallcourses.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>All Courses</h1>
+    <header class="nav">
+      <nav>
+          <a href="../index.php"><img src="../images/extra/ll.png" style="width: 200px;"></a></div>
+          
+          <ul id="navLinks">
+              <li><a href="../index.php" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
+              <li><a href="../pages/showallcourses.html" onclick="showSection('courses')"><i class="fas fa-book"></i> Courses</a></li>
+              <li id="loginButton"><a href="../login/login.html" onclick="showSection('login')"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+              <li id="signupButton"><a href="../register/register.html" onclick="showSection('signup')"><i class="fas fa-user-plus"></i> Signup</a></li>
+              <li id="dashboardButton" style="display: none;"><a href="dashboard.html" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+              <li><a href="../index.php#feedback_section" onclick="showSection('feedback')"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+              <li><a href="../index.php#contactus_section" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
+          </ul>
+      </nav>
+      
   </header>
+  <div id="h1"><h1>Our Courses</h1></div>
+  
   <div class="container">
     <section id="courses" class="courses">
-      <h2>Our Courses</h2>
     </section>
   </div>
 
