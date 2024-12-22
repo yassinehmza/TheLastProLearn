@@ -23,13 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Check for errors before inserting into database
     if (empty($username_err) && empty($password_err)) {
-        // Hash the password
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
         // Prepare and execute the SQL statement
         $sql = "INSERT INTO admins (username, password) VALUES (?, ?)";
         if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("ss", $username, $hashed_password);
+            $stmt->bind_param("ss", $username, $password);
 
             if ($stmt->execute()) {
                 echo "Admin added successfully!";
