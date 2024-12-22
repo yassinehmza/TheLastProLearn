@@ -3,7 +3,7 @@ session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header('Location: ../register.html');
+    header('Location: ../register/register.html');
     exit();
 }
 
