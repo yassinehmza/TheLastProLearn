@@ -34,5 +34,26 @@
   </div>
 
   <script src="../js/showallcourses.js"></script>
+  <script>
+    // Function to check login status and user role
+    function checkLoginStatus() {
+        fetch('../backend/check_login_status.php') // This file checks login status from the session
+            .then(response => response.json())
+            .then(data => {
+                if (data.logged_in) {
+                    // Hide login and signup, show dashboard
+                    document.getElementById('loginButton').style.display = 'none';
+                    document.getElementById('signupButton').style.display = 'none';
+
+                    // Show the correct dashboard based on role
+                    document.getElementById('dashboardButton').style.display = 'block';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Check login status on page load
+    checkLoginStatus();
+</script>
 </body>
 </html>
