@@ -173,6 +173,30 @@ button#submit:active {
         font-size: 14px;
     }
 }
+.BT {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #0070f3, #0053c1);
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.BT:hover {
+    background: linear-gradient(90deg, #0053c1, #0070f3);
+    transform: scale(1.02);
+}
+
+.BT:active {
+    transform: scale(0.98);
+}
+
 
     </style>
 </head>
@@ -192,7 +216,11 @@ button#submit:active {
         <div id="success-message" style="color: green; display: none;"></div> <!-- Success message -->
     </form>
     <br><br>
+    <button class="BT" onclick="window.location.href='../pages/showallcourses.html'">Our Courses</button>
+
     </div>
+    
+    
     </center>
 
     <script>
