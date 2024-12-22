@@ -95,6 +95,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
                     <li><a href="/admin/manage-courses.php">Manage Courses</a></li>
                     <li><a href="/admin/manage-quizzes.php">Manage Quizzes</a></li>
                     <li><a href="/admin//manage-users.php">Manage Users</a></li>
+                    <li><a href="/admin/add-admin.php">add admin</a></li>
                     <li><a href="login.php">Logout</a></li>
                 </ul>
             </nav>
