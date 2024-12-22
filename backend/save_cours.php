@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->close();
 
         echo 'Course information has been successfully updated!';
+        
     } else {
         // Add a new course
         $sql = "INSERT INTO courses (title, description, price) VALUES (?, ?, ?)";
@@ -81,4 +82,125 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die('Invalid course ID.');
     }
 }
+
 ?>
+<button > <a href="../admin/manage-courses.php"> Manage Couses</a></button>
+<style>
+    /* Style général */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Bouton de navigation */
+button {
+    background: linear-gradient(90deg, #0070f3, #0053c1);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #0053c1, #0070f3);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Lien dans le bouton */
+button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+button a:hover {
+    text-decoration: underline;
+}
+
+/* Conteneur principal pour messages */
+.message {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Réussite */
+.message.success {
+    border-left: 6px solid #28a745;
+    color: #155724;
+}
+
+/* Erreur */
+.message.error {
+    border-left: 6px solid #dc3545;
+    color: #721c24;
+}
+
+/* Mise en page des formulaires */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+input[type="text"], 
+input[type="number"], 
+textarea, 
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #0070f3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 112, 243, 0.2);
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+}
+
+</style>

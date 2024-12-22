@@ -157,7 +157,8 @@ $result = mysqli_query($conn, $query);
                 <thead>
                     <tr>
                         <th>User ID</th>
-                        <th>Full Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Email</th>
                         <th>Actions</th>
                     </tr>
