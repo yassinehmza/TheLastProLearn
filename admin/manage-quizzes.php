@@ -221,7 +221,6 @@ section table tbody tr:hover {
                     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                         <tr>
 
-                            <td><?php echo $row['id']; ?></td>
                             <!-- <td><?php /*echo $row['id'];*/ ?></td> -->
                             <td><?php echo $row['question']; ?></td>
                             <td><?php echo $row['options']; ?></td>
