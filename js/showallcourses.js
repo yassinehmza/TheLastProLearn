@@ -16,7 +16,7 @@ fetch('../backend/getallcourses.php')
         <img src="${course.image || 'https://via.placeholder.com/350x200'}" alt="${course.title}">
         <h3>${course.title}</h3>
         <p>${course.description}</p>
-        <a href="#" class="get-started" data-course-id="${course.id}">Enroll Now</a>
+        <a href="../backend/get_course_details.php?course_id=${course.id}" class="get-started">Enroll Now</a>
       `;
       coursesContainer.appendChild(courseItem);
     });
