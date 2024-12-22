@@ -50,6 +50,7 @@ header {
 header nav {
     display: flex;
     align-items: center;
+    margin-right: 120px;
 }
 
 header nav ul {
@@ -76,6 +77,7 @@ header nav a:hover {
 
 /* Section principale */
 section {
+    margin-top: 80px;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -159,6 +161,7 @@ section table tbody tr:hover {
 
     section {
         padding: 15px;
+        margin-top: 100px;
     }
 
     section table thead, 
@@ -197,10 +200,11 @@ section table tbody tr:hover {
                 </ul>
             </nav>
         </header>
-
+        <br><br><br><br> 
         <section>
-            <br><br><br><br><br><br>
-            <h2>Quiz List</h2>
+            
+            <div>
+            <div><h2>Quiz List</h2>
             <table>
                 <thead>
                     <tr>
@@ -226,6 +230,7 @@ section table tbody tr:hover {
             </table>
             <a class="ADD" id="add" href="add-quiz.php">Add New Quiz</a>
         </section>
+        
     </div>
 </body>
 </html>
