@@ -1,5 +1,6 @@
 <?php
 // checkout.php
+session_start(); // Start the session to get the logged-in user's ID
 require '../vendor/autoload.php'; // Ensure Stripe is installed with Composer
 require 'db.php'; // Ensure this includes your DB connection
 
@@ -17,9 +18,17 @@ if (!$input) {
 $payment_method_id = isset($input['payment_method']) ? $input['payment_method'] : '';
 $course_id = isset($input['course_id']) ? (int)$input['course_id'] : 0;
 
+// Ensure the user is logged in, otherwise return an error
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['error' => 'User not logged in']);
+    exit;
+}
+
+$user_id = $_SESSION['user_id']; // Get the logged-in user's ID from the session
+
 // Validate the payment method and course ID
-if (!$payment_method_id || !$course_id) {
-    echo json_encode(['error' => 'Missing payment_method or course_id']);
+if (!$payment_method_id || !$course_id || !$user_id) {
+    echo json_encode(['error' => 'Missing payment_method, course_id, or user_id']);
     exit;
 }
 
@@ -55,11 +64,10 @@ try {
 
     // Check the status of the PaymentIntent
     if ($paymentIntent->status == 'succeeded') {
-        // Store payment details in MySQL
-        $user_id = 1; // Replace this with actual logged-in user's ID
-        $stmt = $conn->prepare("INSERT INTO payments (user_id, course_id, amount, status) VALUES (?, ?, ?, ?)");
+        // Store payment details in MySQL (update table structure to include payment_method)
+        $stmt = $conn->prepare("INSERT INTO payments (user_id, course_id, amount, status, payment_method) VALUES (?, ?, ?, ?, ?)");
         $status = 'completed';
-        $stmt->bind_param("iiis", $user_id, $course_id, $amount, $status);
+        $stmt->bind_param("iiiss", $user_id, $course_id, $amount, $status, $payment_method_id);
         $stmt->execute();
 
         echo json_encode(['message' => 'Payment succeeded!']);

@@ -4,7 +4,11 @@ require 'db.php'; // Ensure this includes your DB connection
 
 $course_id = isset($_GET['course_id']) ? (int)$_GET['course_id'] : 0;
 $course_details = null;
-
+if (isset($_SESSION['user_id'])) {
+    // If not logged in, redirect to register.html
+    header('Location: ../register/register.html');
+    exit();
+}
 if ($course_id) {
     // Fetch course details from the database
     $query = "SELECT * FROM courses WHERE id = ?";
