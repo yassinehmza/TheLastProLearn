@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_test'])) {
     // Insert the answer into course_test_answers
     $insert_answer_query = "INSERT INTO course_test_answers (test_id, user_id, selected_option_id, is_correct, created_at) VALUES (?, ?, ?, ?, NOW())";
     $stmt = $conn->prepare($insert_answer_query);
-    $stmt->bind_param('iiiii', $test_id, $user_id, $selected_option_id, $is_correct);
+    $stmt->bind_param('iiii', $test_id, $user_id, $selected_option_id, $is_correct);
     $stmt->execute();
     $stmt->close();
     

@@ -202,9 +202,9 @@ button#submit:active {
 </head>
 <body>
     <center>
-        <br><br><br><br>
+        <br/><br/><br/><br/>
     <div class="cnt">
-        <br>
+        <br/>
     <h2>Course Payment: <?php echo htmlspecialchars($course_details['title']); ?></h2>
     <p><strong>Description:</strong> <?php echo htmlspecialchars($course_details['description']); ?></p>
     <p><strong>Price:</strong> $<?php echo number_format($course_details['price'] / 100, 2); ?> USD</p> <!-- Assuming price is in cents -->
@@ -215,7 +215,7 @@ button#submit:active {
         <div id="error-message"></div>
         <div id="success-message" style="color: green; display: none;"></div> <!-- Success message -->
     </form>
-    <br><br>
+    <br/>
     <button class="BT" onclick="window.location.href='../pages/showallcourses.html'">Our Courses</button>
 
     </div>
