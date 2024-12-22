@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['role'] = $user['role'];
 
                 // Redirect to a common dashboard
-                header('Location: ../dashboard/dashboard.html');
+                header('Location: ../index.php');
                 exit();
             } else {
                 echo "Mot de passe incorrect.";
