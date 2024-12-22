@@ -19,6 +19,7 @@ $result = mysqli_query($conn, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Quizzes</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> -->
 
     <style>
           /* Styles globaux */
@@ -50,6 +51,7 @@ header {
 header nav {
     display: flex;
     align-items: center;
+    margin-right: 120px;
 }
 
 header nav ul {
@@ -76,6 +78,7 @@ header nav a:hover {
 
 /* Section principale */
 section {
+    margin-top: 80px;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -128,6 +131,7 @@ section table tbody tr:hover {
 .delete {
     color: red;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .add {
@@ -159,6 +163,7 @@ section table tbody tr:hover {
 
     section {
         padding: 15px;
+        margin-top: 100px;
     }
 
     section table thead, 
@@ -172,6 +177,7 @@ section table tbody tr:hover {
         .Delete {
             color: red;
         }
+
         .ADD {
             color: #333333;
             text-decoration: none;
@@ -197,25 +203,27 @@ section table tbody tr:hover {
                 </ul>
             </nav>
         </header>
-
+        <br><br><br><br> 
         <section>
-            <br><br><br><br><br><br>
-            <h2>Quiz List</h2>
+            
+            <div>
+            <div><h2>Quiz List</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Quiz ID</th>
-                        <th>Title</th>
-                        <th>Course</th>
+                        <!-- <th>Quiz ID</th> -->
+                        <th>Question</th>
+                        <th>Options</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                         <tr>
-                            <td><?php echo $row['id']; ?></td>
-                            <td><?php echo $row['title']; ?></td>
-                            <td><?php echo $row['course_id']; ?></td>
+
+                            <!-- <td><?php /*echo $row['id'];*/ ?></td> -->
+                            <td><?php echo $row['question']; ?></td>
+                            <td><?php echo $row['options']; ?></td>
                             <td>
                                 <a class="add" href="edit-quiz.php?id=<?php echo $row['id']; ?>">Edit</a> |
                                 <a class="delete" href="delete-quiz.php?id=<?php echo $row['id']; ?>">Delete</a>

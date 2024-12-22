@@ -28,6 +28,7 @@ $tests = $tests_result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!-- Form for editing course -->
+<p id="CourTitle"><b>Edit Cours <?php echo $course['title']; ?></b></p>
 <form action="../backend/save_cours.php" method="POST">
     <input type="hidden" name="course_id" value="<?php echo $course['id']; ?>">
     <input type="text" name="title" value="<?php echo $course['title']; ?>" placeholder="Course Title">
@@ -189,6 +190,10 @@ input[type="checkbox"] {
     button {
         font-size: 14px;
     }
+}
+#CourTitle{
+    text-align: center;
+    font-size: 25px;
 }
 
 </style>

@@ -163,7 +163,7 @@ $result = mysqli_query($conn, $query);
             <table>
                 <thead>
                     <tr>
-                        <th>Course ID</th>
+                        <!-- <th>Course ID</th> -->
                         <th>Title</th>
                         <th>Description</th>
                         <th>Actions</th>
@@ -172,7 +172,7 @@ $result = mysqli_query($conn, $query);
                 <tbody>
                     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                         <tr>
-                            <td><?php echo $row['id']; ?></td>
+                            <!-- <td><?php /* echo $row['id']; */?></td> -->
                             <td><?php echo $row['title']; ?></td>
                             <td><?php echo $row['description']; ?></td>
                             <td>

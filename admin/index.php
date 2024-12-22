@@ -77,9 +77,9 @@ if (!isset($_SESSION['admin_logged_in'])) {
     }
 
     section h2 {
-            margin-top: 0;
-            font-size: 2em;
-            color: red;
+        margin-top: 0;
+        font-size: 2em;
+        color: red;
     }
 
     section p {
