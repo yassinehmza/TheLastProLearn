@@ -21,7 +21,7 @@
                 <li id="signupButton"><a href="../register/register.html" onclick="showSection('signup')"><i class="fas fa-user-plus"></i> Signup</a></li>
                 <li id="dashboardButton" style="display: none;"><a href="../dashboard/dashboard.html" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="#feedback_section" onclick="showSection('feedback')"><i class="fas fa-comment-dots"></i> Feedback</a></li>
-                <li><a href="#contact" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="#contactus_section" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -33,13 +33,13 @@
                 <img src="./images/extra/Code_on_t-shirt-removebg-preview.png" alt="">
             </div>
             <h1>Empower Your Future <br>Learn It
-    Skills <br> Anytime,Anywhere!</h1>
+    Skills <br> Anytime , Anywhere!</h1>
             <a href="./login/login.html" class="get-started" onclick="showSection('signup')">Get Started</a>
         </section>
         <br><br><br>
         <!-- Some Popular Subjects -->
 	<div class="title">
-		<span>Popular Subjects on LearnEd</span>
+		<span>Popular Subjects on ProLearn</span>
 	</div>
 	<br><br>
 	<div class="course">
@@ -89,30 +89,26 @@
             <div class="back-contact">
                 <div class="cc">
                     <form action="yassine5.hamza5@gmail.com" method="post" enctype="text/plain">
-                        <label>First Name <span class="imp">*</span></label>
-                        <label style="margin-left: 185px">Last Name <span class="imp">*</span></label><br>
-                        <center>
-                            <input type="text" name="fname" style="margin-right: 10px; width: 175px" required="required">
-                            <input type="text" name="lname" style="width: 175px" required="required"><br>
-                        </center>
+                        <label>First Name <span class="imp">*</span></label><br>
+                        <input type="text" name="fname" style="margin-right: 10px; width: 175px" required="required"><br>
+                        <label >Last Name <span class="imp">*</span></label><br>
+                        <input type="text" name="lname" style="width: 175px" required="required"><br>
+                    
                         <label>Email <span class="imp">*</span></label><br>
                         <input type="email" name="mail" style="width: 100%" required="required"><br>
                         <label>Message <span class="imp">*</span></label><br>
                         <input type="text" name="message" style="width: 100%" required="required"><br>
-                        <label>Additional Details</label><br>
-                        <textarea name="additional"></textarea><br>
                         <button type="submit" id="csubmit">Send Message</button>
                     </form>
                 </div>
             </div>
         </div>
 <!--Feedack-->
-        <div class="diffSection" id="feedback_section">
-    <center><p class="feedback-title">Student Feedback</p></center>
+<div class="diffSection" id="feedback_section">
+    <center><p class="feedback-title"><b> Student Feedback</b></p></center>
     <div class="feedback-container">
-        <button class="slider-btn prev">‹</button>
+        <button class="slider-btn prev" onclick="slide(-1)">‹</button>
         <div class="feedback-slider">
-            <!-- PHP générera ici les cartes feedback -->
             <?php
             include './backend/db.php';
 
@@ -144,64 +140,32 @@
             $conn->close();
             ?>
         </div>
-        <button class="slider-btn next">›</button>
+        <button class="slider-btn next" onclick="slide(1)">›</button>
     </div>
 </div>
+
 <br><br>
 
 <script>
-    const slider = document.querySelector(".feedback-slider");
-const prevBtn = document.querySelector(".slider-btn.prev");
-const nextBtn = document.querySelector(".slider-btn.next");
+    let currentSlide = 0;
 
-let currentIndex = 0; // Index du slide actuel
-const itemsPerSlide = 6; // Nombre de feedbacks par slide
-const totalItems = document.querySelectorAll(".feedback-card").length;
-const totalSlides = Math.ceil(totalItems / itemsPerSlide); // Nombre total de slides
+function slide(direction) {
+    const slider = document.querySelector('.feedback-slider');
+    const cardWidth = document.querySelector('.feedback-card').offsetWidth;
+    const gap = 20; // L'espacement défini dans CSS
+    const slideWidth = (cardWidth + gap) * 4; // Largeur totale de 4 cartes
+    const maxSlides = Math.ceil(slider.children.length / 4) - 1;
 
-// Fonction pour aller au slide précédent
-prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateSliderPosition();
-    }
-});
+    currentSlide += direction;
 
-// Fonction pour aller au slide suivant
-nextBtn.addEventListener("click", () => {
-    if (currentIndex < totalSlides - 1) {
-        currentIndex++;
-        updateSliderPosition();
-    }
-});
+    if (currentSlide < 0) currentSlide = 0;
+    if (currentSlide > maxSlides) currentSlide = maxSlides;
 
-// Met à jour la position du slider
-function updateSliderPosition() {
-    const slideWidth = slider.parentElement.offsetWidth; // Largeur du container
-    slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
 }
 
+
 </script>
-
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <h2>Contact Us</h2>
-            <p>If you have any questions, feel free to reach out!</p>
-            <form>
-                <label for="contact-name">Your Name:</label>
-                <input type="text" id="contact-name" name="name" required>
-
-                <label for="contact-email">Your Email:</label>
-                <input type="email" id="contact-email" name="email" required>
-
-                <label for="contact-message">Message:</label>
-                <textarea id="contact-message" name="message" rows="4" required></textarea>
-
-                <button type="submit" class="btn-submit">Send Message</button>
-            </form>
-        </section>
-    </main>
 
     <footer>
         <p>&copy; 2024 ProLearn. All rights reserved.</p>
