@@ -218,7 +218,7 @@ section table tbody tr:hover {
                     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                         <tr>
                             <td><?php echo $row['id']; ?></td>
-                            <td><?php echo $row['title']; ?></td>
+                            <td><?php echo $row['course_title']; ?></td>
                             <td><?php echo $row['course_id']; ?></td>
                             <td>
                                 <a class="add" href="edit-quiz.php?id=<?php echo $row['id']; ?>">Edit</a> |
