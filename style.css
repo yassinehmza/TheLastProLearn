@@ -9,11 +9,11 @@ body {
     scroll-behavior: smooth;
     box-sizing: border-box;
 }
-
 header {
-    background-color: white;
+    /*background: linear-gradient(to right, #FA4B37, #DF2771);*/
+    background-color: transparent;
     color: #333333; 
-    padding: 15px 30px;
+    padding: 15px 1px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -22,14 +22,17 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s eas
 }
-
+header .nav{
+    padding: 0 0 0 0;
+  }
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white ;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white ;
+  width: 100%;
 }
 
 .logo {
@@ -48,11 +51,11 @@ nav ul {
 nav a {
     text-decoration: none;
     color: #333333; 
-    font-weight: 500px;
+    font-weight: 500;
     padding: 10px 20px; 
     margin-right:45px; 
     border-radius: 8px; 
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shado
 }
 
 nav a:hover {
