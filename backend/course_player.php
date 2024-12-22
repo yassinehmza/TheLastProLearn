@@ -38,8 +38,10 @@ if ($stmt = $conn->prepare($videos_query)) {
     $stmt->close();
 }
 
-// Fetch tests
+// Fetch tests and options
 $tests = [];
+$test_options_query = "SELECT id, test_id, option_text, is_correct FROM test_options WHERE test_id IN (SELECT id FROM tests WHERE course_id = ?)";
+
 if ($stmt = $conn->prepare($tests_query)) {
     $stmt->bind_param('i', $course_id);
     $stmt->execute();
@@ -47,6 +49,19 @@ if ($stmt = $conn->prepare($tests_query)) {
 
     while ($row = $result->fetch_assoc()) {
         $tests[] = $row;
+    }
+
+    $stmt->close();
+}
+
+$test_options = [];
+if ($stmt = $conn->prepare($test_options_query)) {
+    $stmt->bind_param('i', $course_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $test_options[$row['test_id']][] = $row;
     }
 
     $stmt->close();
@@ -61,8 +76,33 @@ for ($i = 0; $i < $max_items; $i++) {
         $content[] = ['type' => 'video', 'data' => $videos[$i]];
     }
     if (isset($tests[$i])) {
-        $content[] = ['type' => 'test', 'data' => $tests[$i]];
+        $content[] = ['type' => 'test', 'data' => $tests[$i], 'options' => $test_options[$tests[$i]['id']] ?? []];
     }
+}
+
+// Handle test submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_test'])) {
+    $test_id = $_POST['test_id'];
+    $selected_option_id = $_POST['selected_option_id'];
+    
+    // Get the correct answer for the test option
+    $correct_option_query = "SELECT is_correct FROM test_options WHERE id = ?";
+    $stmt = $conn->prepare($correct_option_query);
+    $stmt->bind_param('i', $selected_option_id);
+    $stmt->execute();
+    $stmt->bind_result($is_correct);
+    $stmt->fetch();
+    $stmt->close();
+
+    // Insert the answer into course_test_answers
+    $insert_answer_query = "INSERT INTO course_test_answers (test_id, user_id, selected_option_id, is_correct, created_at) VALUES (?, ?, ?, ?, NOW())";
+    $stmt = $conn->prepare($insert_answer_query);
+    $stmt->bind_param('iiiii', $test_id, $user_id, $selected_option_id, $is_correct);
+    $stmt->execute();
+    $stmt->close();
+    
+    // Provide feedback
+    echo "<p>Answer submitted successfully. Correct answer: " . ($is_correct ? "Yes" : "No") . "</p>";
 }
 
 // Close the database connection
@@ -110,6 +150,12 @@ $conn->close();
             width: 100%;
             height: auto;
         }
+        .options {
+            margin-top: 10px;
+        }
+        .options label {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -129,7 +175,19 @@ $conn->close();
                 <?php elseif ($item['type'] === 'test'): ?>
                     <div class="card">
                         <h3>Question: <?php echo htmlspecialchars($item['data']['question']); ?></h3>
-                        <a class="button" href="/take_test.php?test_id=<?php echo $item['data']['id']; ?>">Take Test</a>
+
+                        <form method="POST" action="">
+                            <input type="hidden" name="test_id" value="<?php echo $item['data']['id']; ?>">
+                            <div class="options">
+                                <?php foreach ($item['options'] as $option): ?>
+                                    <label>
+                                        <input type="radio" name="selected_option_id" value="<?php echo $option['id']; ?>">
+                                        <?php echo htmlspecialchars($option['option_text']); ?>
+                                    </label>
+                                <?php endforeach; ?>
+                            </div>
+                            <button class="button" type="submit" name="submit_test">Submit Answer</button>
+                        </form>
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
