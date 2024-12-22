@@ -19,6 +19,7 @@ $result = mysqli_query($conn, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Quizzes</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> -->
 
     <style>
           /* Styles globaux */
@@ -130,6 +131,7 @@ section table tbody tr:hover {
 .delete {
     color: red;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .add {
@@ -175,6 +177,7 @@ section table tbody tr:hover {
         .Delete {
             color: red;
         }
+
         .ADD {
             color: #333333;
             text-decoration: none;
@@ -217,6 +220,7 @@ section table tbody tr:hover {
                 <tbody>
                     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                         <tr>
+
                             <!-- <td><?php /*echo $row['id'];*/ ?></td> -->
                             <td><?php echo $row['question']; ?></td>
                             <td><?php echo $row['options']; ?></td>
