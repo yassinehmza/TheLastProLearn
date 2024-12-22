@@ -28,7 +28,7 @@ $tests = $tests_result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!-- Form for editing course -->
-<form action="save_course.php" method="POST">
+<form action="../backend/save_cours.php" method="POST">
     <input type="hidden" name="course_id" value="<?php echo $course['id']; ?>">
     <input type="text" name="title" value="<?php echo $course['title']; ?>" placeholder="Course Title">
     <textarea name="description" placeholder="Course Description"><?php echo $course['description']; ?></textarea>

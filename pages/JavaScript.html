@@ -58,12 +58,7 @@
             border: none;
             border-radius: 0 0 8px 8px;
         }
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #6c757d;
-            font-size: 0.9em;
-        }
+        
         @media (max-width: 600px) {
             .video {
                 width: 100%;
@@ -122,7 +117,16 @@
             color: #FA4B37;
             box-shadow: 0 4px 6px rgba(141, 86, 86, 0.1);
         }
-
+        footer {
+            text-align: center;
+            padding: 20px 0px;
+            background-color: #141414;
+            color: #fff;
+            font-size: 15px;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -179,8 +183,26 @@
     </div>
 
     <footer>
-        <p class="footere">&copy; 2024 JavaScript Resource Page</p>
+        &copy; 2024 ProLearn. All rights reserved.
     </footer>
-
+    <script>
+        // Function to check login status and user role
+        function checkLoginStatus() {
+            fetch('../backend/check_login_status.php') // This file checks login status from the session
+                .then(response => response.json())
+                .then(data => {
+                    if (data.logged_in) {
+                        // Hide login and signup, show dashboard
+                        document.getElementById('loginButton').style.display = 'none';
+                        document.getElementById('signupButton').style.display = 'none';
+                        // Show the correct dashboard based on role
+                        document.getElementById('dashboardButton').style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        // Check login status on page load
+        checkLoginStatus();
+    </script>
 </body>
 </html>

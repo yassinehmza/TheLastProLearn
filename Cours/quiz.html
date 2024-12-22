@@ -5,26 +5,26 @@
 	<title>Quiz on ProLearn</title>
 	<link rel="stylesheet" type="text/css" href="quizStyle.css">
 	<script type="text/javascript" src="../js/script.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 	
 <!-- NAVIGATION -->
-	<header>
-		<div class="nav" id="nav">
-			<div id="learned-logo">
-				<a href="../index.php"><img src="../images/icon/logo.png" style="width: 200px;"></a></div>
-			<div class="switch-tab" id="switch-tab" onclick="switchTAB()"><img src="../images/icon/menu.png"></div>
-			<ul id="list-switch">
-				<li><a href="computer_courses.html"><img src="../images/courses/computer.png" class="icon">Computer Courses</a></li>
-				<li><a href="computer_courses.html#data"><img src="../images/courses/data.png" class="icon">Data Structures</a></li>
-				<li><a href="computer_courses.html#algo"><img src="../images/courses/algo.png" class="icon">Algorithm</a></li>
-			
-			</ul>
-			<div class="search" id="search-switch">
-				<input type="search" placeholder="Search" class="srch"><button id="srchbtn"><img src="../images/icon/search.png"></button>
-			</div>
-		</div>
-	</header>
+<header>
+    <nav>
+        <a href="../index.php"><img src="../images/extra/ll.png" style="width: 200px;"></a></div>
+        <ul id="navLinks">
+            <li><a href="../index.php" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="../pages/showallcourses.html" onclick="showSection('courses')"><i class="fas fa-book"></i> Courses</a></li>
+            <li id="loginButton"><a href="../login/login.html" onclick="showSection('login')"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            <li id="signupButton"><a href="../register/register.html" onclick="showSection('signup')"><i class="fas fa-user-plus"></i> Signup</a></li>
+            <li id="dashboardButton" style="display: none;"><a href="../dashboard/dashboard.html" onclick="showSection('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="../index.php#feedback_section" onclick="showSection('feedback')"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+            <li><a href="../index.php#contactus_section" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+</header>
 	
 
 <!-- MAIN Heading of Page -->
@@ -74,5 +74,24 @@
 </div>
 
 	<script type="text/javascript" src="../js/script.js"></script>
+	<script>
+        // Function to check login status and user role
+        function checkLoginStatus() {
+            fetch('../backend/check_login_status.php') // This file checks login status from the session
+                .then(response => response.json())
+                .then(data => {
+                    if (data.logged_in) {
+                        // Hide login and signup, show dashboard
+                        document.getElementById('loginButton').style.display = 'none';
+                        document.getElementById('signupButton').style.display = 'none';
+                        // Show the correct dashboard based on role
+                        document.getElementById('dashboardButton').style.display = 'block';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        // Check login status on page load
+        checkLoginStatus();
+    </script>
 </body>
 </html>
