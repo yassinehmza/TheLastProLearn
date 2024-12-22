@@ -208,16 +208,16 @@ section table tbody tr:hover {
             <table>
                 <thead>
                     <tr>
-                        <th>Quiz ID</th>
-                        <th>Title</th>
-                        <th>Course</th>
+                        <!-- <th>Quiz ID</th> -->
+                        <th>Question</th>
+                        <th>Options</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                         <tr>
-                            <td><?php echo $row['id']; ?></td>
+                            <!-- <td><?php /*echo $row['id'];*/ ?></td> -->
                             <td><?php echo $row['question']; ?></td>
                             <td><?php echo $row['options']; ?></td>
                             <td>
@@ -230,7 +230,6 @@ section table tbody tr:hover {
             </table>
             <a class="ADD" id="add" href="add-quiz.php">Add New Quiz</a>
         </section>
-        
     </div>
 </body>
 </html>
