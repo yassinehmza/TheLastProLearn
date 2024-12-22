@@ -8,6 +8,18 @@ if (!isset($_SESSION['admin_logged_in'])) {
 // Example database connection
 include '../backend/db.php';
 
+// Handle delete request
+if (isset($_POST['delete_id'])) {
+    $courseId = $_POST['delete_id'];
+    // Delete course from database
+    $query = "DELETE FROM courses WHERE id = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "i", $courseId);
+    mysqli_stmt_execute($stmt);
+    header("Location: manage-courses.php"); // Refresh page after deletion
+    exit();
+}
+
 $query = "SELECT * FROM courses";
 $result = mysqli_query($conn, $query);
 ?>
@@ -21,122 +33,115 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="../assets/css/styles.css">
     <style>
         /* Global Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
 
+        header {
+            background-color: #ffffff;
+            color: #333333; 
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 40px;
+            z-index: 1050;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
 
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-header {
-        background-color: #ffffff;
-        color: #333333; 
-        padding: 15px 30px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 40px;
-        z-index: 1050;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 5px;
+        }
 
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    nav ul {
-        list-style: none;
-        display: flex;
-        gap: 5px;
-    }
+        nav a {
+            text-decoration: none;
+            color: #333333; 
+            font-weight: 500;
+            padding: 10px 20px; 
+            margin-right:45px; 
+            border-radius: 8px; 
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    nav a {
-        text-decoration: none;
-        color: #333333; 
-        font-weight: 500;
-        padding: 10px 20px; 
-        margin-right:45px; 
-        border-radius: 8px; 
-        transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    }
+        nav a:hover {
+            color: #FA4B37;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-    nav a:hover {
-        color: #FA4B37;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+        section {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 150px;
+            max-width: 1200px;
+            margin-left: 150px;
+            padding: 20px;
+        }
 
-/* Section Styling */
-section {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 150px;
-    max-width: 1200px;
-    margin-left: 150px;
-    padding: 20px;
+        section h2 {
+            margin-top: 0;
+            font-size: 2em;
+            color: #333;
+        }
 
-}
+        section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
 
-section h2 {
-    margin-top: 0;
-    font-size: 2em;
-    color: #333;
-}
+        section table thead th {
+            background-color: antiquewhite;
+            color: black;
+            text-align: left;
+            padding: 10px;
+        }
 
-section table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
+        section table tbody td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
 
-section table thead th {
-    background-color: antiquewhite;
-    color: black;
-    text-align: left;
-    padding: 10px;
-}
+        section table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-section table tbody td {
-    padding: 10px;
-    border: 1px solid #ddd;
-}
+        section table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
 
-section table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-section table tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Action Links */
-
-.edit{
-    color: green;
-}
-.Delete {
-    color: red;
-}
-.ADD {
-    color: #333333;
-    text-decoration: none;
-    
-}
-#add{
-    padding: 10px;
-    border-radius: 20px;
-}
-
-
+        /* Action Links */
+        .edit {
+            color: green;
+        }
+        .Delete {
+            color: red;
+        }
+        .ADD {
+            color: #333333;
+            text-decoration: none;
+        }
+        #add {
+            padding: 10px;
+            border-radius: 20px;
+        }
     </style>
 </head>
 <body>
@@ -172,7 +177,9 @@ section table tbody tr:hover {
                             <td><?php echo $row['description']; ?></td>
                             <td>
                                 <a class="edit" href="edit-course.php?id=<?php echo $row['id']; ?>">Edit</a> |
-                                <a  class="Delete" href="delete-course.php?id=<?php echo $row['id']; ?>">Delete</a>
+                                <form method="post" action="" style="display:inline;">
+                                    <button type="submit" class="Delete" name="delete_id" value="<?php echo $row['id']; ?>">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endwhile; ?>
