@@ -5,9 +5,24 @@ if (!isset($_SESSION['admin_logged_in'])) {
     exit();
 }
 
-// Example database connection
+// Include database connection
 include '../backend/db.php';
 
+// Handle delete request
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_quiz_id'])) {
+    $quiz_id = intval($_POST['delete_quiz_id']); // Sanitize input
+    $delete_query = "DELETE FROM quizzes WHERE id = ?";
+    $stmt = mysqli_prepare($conn, $delete_query);
+    mysqli_stmt_bind_param($stmt, "i", $quiz_id);
+    if (mysqli_stmt_execute($stmt)) {
+        $message = "Quiz deleted successfully!";
+    } else {
+        $message = "Failed to delete quiz.";
+    }
+    mysqli_stmt_close($stmt);
+}
+
+// Fetch quizzes
 $query = "SELECT * FROM quizzes";
 $result = mysqli_query($conn, $query);
 ?>
@@ -19,8 +34,6 @@ $result = mysqli_query($conn, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Quizzes</title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous"> -->
-
     <style>
           /* Styles globaux */
 body {
@@ -188,7 +201,6 @@ section table tbody tr:hover {
         }
 
     </style>
-    
 </head>
 <body>
     <div class="container">
@@ -203,40 +215,39 @@ section table tbody tr:hover {
                 </ul>
             </nav>
         </header>
-        <br><br><br><br> 
+        <br><br><br><br>
         <section>
-            
             <div>
-            <div><h2>Quiz List</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <!-- <th>Quiz ID</th> -->
-                        <th>Question</th>
-                        <th>Options</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                <h2>Quiz List</h2>
+                <?php if (isset($message)) : ?>
+                    <p><?php echo $message; ?></p>
+                <?php endif; ?>
+                <table>
+                    <thead>
                         <tr>
-<<<<<<< HEAD
-                            <td><?php echo $row['id']; ?></td>
-=======
-
-                            <!-- <td><?php /*echo $row['id'];*/ ?></td> -->
->>>>>>> 8356cd537b0d50bd7291adfe58a708371d0ee0c6
-                            <td><?php echo $row['question']; ?></td>
-                            <td><?php echo $row['options']; ?></td>
-                            <td>
-                                <a class="add" href="edit-quiz.php?id=<?php echo $row['id']; ?>">Edit</a> |
-                                <a class="delete" href="delete-quiz.php?id=<?php echo $row['id']; ?>">Delete</a>
-                            </td>
+                            <th>Question</th>
+                            <th>Options</th>
+                            <th>Actions</th>
                         </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-            <a class="ADD" id="add" href="add-quiz.php">Add New Quiz</a>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                            <tr>
+                                <td><?php echo $row['question']; ?></td>
+                                <td><?php echo $row['options']; ?></td>
+                                <td>
+                                    <a class="add" href="edit-quiz.php?id=<?php echo $row['id']; ?>">Edit</a> |
+                                    <form method="POST" style="display: inline;">
+                                        <input type="hidden" name="delete_quiz_id" value="<?php echo $row['id']; ?>">
+                                        <button type="submit" class="delete" onclick="return confirm('Are you sure you want to delete this quiz?');">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+                <a class="ADD" id="add" href="add-quiz.php">Add New Quiz</a>
+            </div>
         </section>
     </div>
 </body>
