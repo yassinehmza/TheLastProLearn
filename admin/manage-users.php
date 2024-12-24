@@ -156,19 +156,22 @@ $result = mysqli_query($conn, $query);
             <table>
                 <thead>
                     <tr>
-                        <th>User ID</th>
-                        <th>Full Name</th>
+                        <!-- <th>User ID</th> -->
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Email</th>
+                        <th>Password</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                         <tr>
-                            <td><?php echo $row['id']; ?></td>
+                            <!-- <td><?php /*echo $row['id'];*/ ?></td> -->
                             <td><?php echo $row['prenom']; ?></td>
                             <td><?php echo $row['nom']; ?></td>
                             <td><?php echo $row['email']; ?></td>
+                            <td><?php echo $row['password']; ?></td>
                             <td>
                                 <form method="get" action="">
                                     <button type="submit" class="Delete" name="id" value="<?php echo $row['id']; ?>">Delete</button>

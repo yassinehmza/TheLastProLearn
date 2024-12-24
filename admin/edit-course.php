@@ -28,6 +28,7 @@ $tests = $tests_result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!-- Form for editing course -->
+<p id="CourTitle"><b>Edit Cours <?php echo $course['title']; ?></b></p>
 <form action="../backend/save_cours.php" method="POST">
     <input type="hidden" name="course_id" value="<?php echo $course['id']; ?>">
     <input type="text" name="title" value="<?php echo $course['title']; ?>" placeholder="Course Title">
@@ -72,3 +73,127 @@ $tests = $tests_result->fetch_all(MYSQLI_ASSOC);
 
     <button type="submit">Save Changes</button>
 </form>
+<style>
+    /* Style général */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Conteneur principal */
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titres */
+h3 {
+    font-size: 18px;
+    color: #0053c1;
+    border-bottom: 2px solid #f4f4f4;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 16px;
+    color: #0070f3;
+    margin-top: 10px;
+}
+
+/* Champs de formulaire */
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #0070f3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 112, 243, 0.2);
+}
+
+/* Conteneurs pour les vidéos et tests */
+div {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+/* Boutons */
+button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #0070f3, #0053c1);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #0053c1, #0070f3);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Labels pour les options */
+label {
+    font-size: 14px;
+    margin-left: 10px;
+    color: #333;
+}
+
+/* Cases à cocher */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+#CourTitle{
+    text-align: center;
+    font-size: 25px;
+}
+
+</style>

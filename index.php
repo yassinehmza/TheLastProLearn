@@ -12,7 +12,7 @@
 <body>
     <header class="Header">
         <nav id="navbar">
-            <a href="index.php"><img src="../images/extra/ll.png" style="width: 200px;" alt="Logo"></a>
+            <a href="index.php"><img src="images/extra/ll.png" style="width: 200px;" alt="Logo"></a>
             <span class="hamburger" onclick="toggleMenu()">☰</span>
             <ul id="navLinks">
                 <li><a href="index.php" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
