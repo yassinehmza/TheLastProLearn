@@ -14,7 +14,6 @@ if (!isset($user_id)) {
 }
 
 // Fetch user details from the database using the session's user ID
- // Get the logged-in user's ID from the session
 $query = "SELECT nom, prenom, email, created_at FROM users WHERE id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);
@@ -33,7 +32,6 @@ while ($row = $courses_result->fetch_assoc()) {
     $courses[] = $row;
 }
 $stmt->close();
-
 
 // Fetch the progress for each course
 $course_progress = [];
@@ -100,6 +98,9 @@ $stmt->close();
         .progress-bar div { height: 20px; background: #4CAF50; border-radius: 10px; }
         .card { border: 1px solid #ccc; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
         .section { margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; }
+        table, th, td { border: 1px solid #ccc; }
+        th, td { padding: 8px; text-align: left; }
     </style>
 </head>
 <body>
@@ -121,28 +122,51 @@ $stmt->close();
         <!-- Middle section: Courses & Progress -->
         <div class="card">
             <h2>Your Courses</h2>
-            <?php foreach ($courses as $course): ?>
-                <div>
-                    <p><?php echo htmlspecialchars($course['title']); ?></p>
-                    <div class="progress-bar">
-                        <div style="width: <?php echo $course_progress[$course['id']] ?? 0; ?>%"></div>
-                    </div>
-                    <p>Progress: <?php echo round($course_progress[$course['id']] ?? 0); ?>%</p>
-                </div>
-            <?php endforeach; ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course Title</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($courses as $course): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($course['title']); ?></td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div style="width: <?php echo $course_progress[$course['id']] ?? 0; ?>%"></div>
+                                </div>
+                                <?php echo round($course_progress[$course['id']] ?? 0); ?>%
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
 
         <!-- Right section: Quiz Status -->
         <div class="card">
             <h2>Your Quizzes</h2>
             <?php if (count($quizzes) > 0): ?>
-                <?php foreach ($quizzes as $quiz): ?>
-                    <div>
-                        <p>Quiz: <?php echo htmlspecialchars($quiz['question']); ?></p>
-                        <p>Score: <?php echo htmlspecialchars($quiz['score']); ?>%</p>
-                        <p>Date Taken: <?php echo htmlspecialchars($quiz['created_at']); ?></p>
-                    </div>
-                <?php endforeach; ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Quiz Question</th>
+                            <th>Score</th>
+                            <th>Date Taken</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($quizzes as $quiz): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($quiz['question']); ?></td>
+                                <td><?php echo htmlspecialchars($quiz['score']); ?>%</td>
+                                <td><?php echo htmlspecialchars($quiz['created_at']); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             <?php else: ?>
                 <p>You haven't taken any quizzes yet.</p>
             <?php endif; ?>

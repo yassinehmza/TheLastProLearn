@@ -20,6 +20,10 @@ if (!isset($_GET['course_id'])) {
 
 $course_id = intval($_GET['course_id']);
 
+// Initialize variables to avoid undefined errors
+$total_items = 0;
+$completed_items = 0;
+
 // Handle video completion logging
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['video_id'])) {
     $video_id = intval($_POST['video_id']);
@@ -66,7 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['test_id'])) {
     $stmt->close();
 }
 
-// Calculate progress
 // Total items (videos + tests) in the course
 $total_query = "SELECT 
     (SELECT COUNT(*) FROM videos WHERE course_id = ?) + 
