@@ -49,8 +49,8 @@ $result = mysqli_query($conn, $query);
                     <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                         <tr>
                             <td><?php echo $row['id']; ?></td>
-                            <td><?php echo $row['title']; ?></td>
-                            <td><?php echo $row['course_id']; ?></td>
+                            <td><?php echo $row['question']; ?></td>
+                            <td><?php echo $row['options']; ?></td>
                             <td>
                                 <a href="edit-quiz.php?id=<?php echo $row['id']; ?>">Edit</a> |
                                 <a href="delete-quiz.php?id=<?php echo $row['id']; ?>">Delete</a>
