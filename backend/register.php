@@ -18,6 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Le nom ne doit contenir que des lettres (sans espaces ni caractères spéciaux).";
         exit();
     }
+    // Replace the simple password length check with this more comprehensive validation
+    if (strlen($password) < 8 || 
+    !preg_match("/[A-Z]/", $password) || 
+    !preg_match("/[a-z]/", $password) || 
+    !preg_match("/[0-9]/", $password) || 
+    !preg_match("/[!@#$%^&*(),.?\":{}|<>]/", $password)) {
+    echo "Le mot de passe doit contenir au moins 8 caractères, incluant au moins une majuscule, une minuscule, un chiffre et un caractère spécial.";
+    exit();
+    }
 
     // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
