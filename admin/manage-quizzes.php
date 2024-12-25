@@ -40,12 +40,13 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 60px;
+    height: 40px;
     z-index: 1050;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    max-width: 1700px;
 }
 
 header nav {
