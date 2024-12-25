@@ -9,9 +9,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm-password'];
 
+    // Validate name fields to allow only letters
+    if (!preg_match("/^[a-zA-Z]+$/", $prenom)) {
+        echo "Le prénom ne doit contenir que des lettres (sans espaces ni caractères spéciaux).";
+        exit();
+    }
+    if (!preg_match("/^[a-zA-Z]+$/", $nom)) {
+        echo "Le nom ne doit contenir que des lettres (sans espaces ni caractères spéciaux).";
+        exit();
+    }
+    // Replace the simple password length check with this more comprehensive validation
+    if (strlen($password) < 8 || 
+    !preg_match("/[A-Z]/", $password) || 
+    !preg_match("/[a-z]/", $password) || 
+    !preg_match("/[0-9]/", $password) || 
+    !preg_match("/[!@#$%^&*(),.?\":{}|<>]/", $password)) {
+    echo "Le mot de passe doit contenir au moins 8 caractères, incluant au moins une majuscule, une minuscule, un chiffre et un caractère spécial.";
+    exit();
+    }
+
     // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Adresse email invalide.";
+        exit();
+    }
+
+    // Validate password length
+    if (strlen($password) < 8) {
+        echo "Le mot de passe doit comporter au moins 8 caractères.";
         exit();
     }
 
