@@ -1,6 +1,6 @@
 <?php
-$host = '127.0.0.1'; 
-$dbname = 'newlearn'; 
+$host = 'localhost:3306'; 
+$dbname = 'newlearne'; 
 $username = 'root'; // Your MySQL username
 $password = ''; // Your MySQL password
 
