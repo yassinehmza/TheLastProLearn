@@ -36,7 +36,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url("../images/extra/administrateur.jpg");
+    background-image: url("../images/extra/1.png");
     color: #333;
     display: flex;
     justify-content: center;
@@ -51,10 +51,12 @@ body {
     background: #fff;
     padding: 40px 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     width: 100%;
     max-width: 400px;
     text-align: center;
+    height: 400px;
+    margin-left: 800px;
 }
 
 /* Title */

@@ -6,10 +6,11 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background :linear-gradient(35deg , black,#FF6A00 ,#EE0979 , #a10fdf ,white);
+  background-image: url("../images/extra/Blue\ Flat\ Color\ UI\ Login\ Page\ Desktop\ Prototype.png");
   width: 100%;
-  background-size: 300% 300%;
+  background-repeat: no-repeat;
 }
+
 form {
   background: white;
   padding: 20px;
@@ -17,16 +18,18 @@ form {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
+  margin-left: 700px;
+  height: 500px;
 }
 label {
   font-weight: bold;
   display: block;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 select, input[type="text"], input[type="email"], input[type="password"], button {
   width:95%;
   padding: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;

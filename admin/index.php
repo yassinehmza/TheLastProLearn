@@ -21,6 +21,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
             padding: 0;
             background-color: white;
             color: #333;
+            background-image: url("../images/extra/1.png");
         
         }
 
@@ -28,7 +29,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
         background-color: #ffffff;
         color: #333333; 
         padding: 15px 30px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); 
         position: fixed;
         top: 0;
         width: 100%;
@@ -68,12 +69,13 @@ if (!isset($_SESSION['admin_logged_in'])) {
 
      section {
             background: whitesmoke;
-            padding: 40px;
+            padding: 100px;
             border-radius: 10px;
-            width: 1000px;
+            width: 400px;
             margin-top: 170px;
             text-align: center;
-            margin-left: 220px;
+            margin-left: 870px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     }
 
     section h2 {
@@ -96,7 +98,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
                     <li><a href="/admin/manage-quizzes.php">Manage Quizzes</a></li>
                     <li><a href="/admin//manage-users.php">Manage Users</a></li>
                     <li><a href="/admin/add-admin.php">add admin</a></li>
-                    <li><a href="login.php">Logout</a></li>
+                    <li><a href="/backend/logout.php">Logout</a></li>
                 </ul>
             </nav>
         </header>
