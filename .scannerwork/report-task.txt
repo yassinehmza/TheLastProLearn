@@ -1,0 +1,6 @@
+projectKey=TheLastProlearn
+serverUrl=http://localhost:9000
+serverVersion=24.12.0.100206
+dashboardUrl=http://localhost:9000/dashboard?id=TheLastProlearn
+ceTaskId=61baffe9-5a76-42cd-ae6a-6a0db78e9db5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=61baffe9-5a76-42cd-ae6a-6a0db78e9db5
